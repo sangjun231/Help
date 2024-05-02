@@ -13,7 +13,10 @@ async function fetchMovies() {
   let movies = [];
 
   for (let page = 1; page <= 3; page++) {
-    const response = await fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=27`, options);
+    const response = await fetch(
+      `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=27`,
+      options
+    );
     const responseJson = await response.json();
     const pageResults = responseJson.results;
 
@@ -36,15 +39,11 @@ async function setCard(movies) {
       "beforeend",
       `
      <div class="card">
-     <img class="poster_img" src="http://image.tmdb.org/t/p/w400/${posterImg}" alt="영화포스터" />
-     <div class="back_part">
-     <p class="back_title">${title}</p>                
-     <p class="back_average">${average}</p>
-     </div>
-     
-                
-     
-     
+      <img class="poster_img" src="http://image.tmdb.org/t/p/w400/${posterImg}" alt="영화포스터" />
+        <div class="back_part">
+          <p class="back_title">${title}</p>                
+          <p class="back_average">${average}</p>
+       </div>
      </div>
             `
     );

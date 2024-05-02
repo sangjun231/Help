@@ -4,32 +4,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- <link href="./css/postComment.css" rel="stylesheet" type="text/css" /> -->
+  <link href="./css/postComment.css" rel="stylesheet" type="text/css" />
+  <script defer src="./js/review.js"></script>
   <title>review page</title>
-  <style>
-    .review {
-      width: 100%;
-      border: 1px solid black;
-    }
-
-    .commentList {
-      border: 1px solid black;
-      border-radius: 20px;
-    }
-
-    .userComment {
-      margin: 5px;
-
-      border: 1px solid black;
-    }
-  </style>
 </head>
-
 <body>
   <div>
-    <a href="index.html">
-      <div class="backBtn"></div>
-    </a>
+    <div class="header" a href="index.html">
+    <h1 class="title">
+      help The pro9rammers!
+      <span class="drop"></span>
+      <span class="drop"></span>
+      <span class="drop"></span>
+      <span class="drop"></span>
+    </h1>
+  </div>
     <div class="review">
       <p>영화 이미지 불러오는 공간</p>
     </div>
@@ -71,113 +60,6 @@
         </div> -->
       </div>
     </div>
-
-    <script>
-      //댓글 등록을 각각의 키를 만들어서 설정
-      document
-        .querySelector("#postingBtn")
-        .addEventListener("click", postingComment);
-
-      function postingComment() {
-        const nickname = document.querySelector("#nickname").value;
-        const pw = document.querySelector("#pw").value;
-        //숫자 표기 소수점을 입력해도 소수점 자리 삭제
-        const rating = parseInt(document.querySelector("#rating").value);
-        const comment = document.querySelector("#comment").value;
-        const commentId = Date.now().toString();
-
-        //유효성 검사
-        if (isNaN(rating)) {
-          alert("평점은 숫자로 입력해주세요,")
-          return;
-        } else if (rating > 10 || rating < 0) {
-          alert("평점은 0점부터 10점까지 해주세요.");
-          return;
-        } else if (!nickname || !pw || !comment) {
-          alert("닉네임, 비밀번호, 평점, 댓글을 모두 입력해주세요.");
-          return;
-        } else {
-
-          const data = {
-            id: commentId,
-            nickname: nickname,
-            pw: pw,
-            rating: rating,
-            comment: comment,
-          };
-
-          const key = "comment_" + commentId;
-          localStorage.setItem(key, JSON.stringify(data));
-
-          alert("댓글이 작성되었습니다.");
-          window.location.reload();
-        }
-      }
-
-      //불러오기
-      function loadComments() {
-        const allComments = [];
-        for (let i = 0; i < localStorage.length; i++) {
-          const key = localStorage.key(i);
-          if (key.startsWith("comment_")) {
-            //가져오고
-            const commentAllDataString = localStorage.getItem(key);
-            //파싱 한 번 더 필요하니까
-            const commentAllDataArray = JSON.parse(commentAllDataString);
-            //그리고 그걸 넣기
-            allComments.push(commentAllDataArray);
-          }
-        }
-        return allComments;
-      }
-
-      // 불러왔으니까 이제 html에 표기
-      function renderComment() {
-        const renderAllComment = loadComments();
-        // console.log(renderAllComment);
-
-        //일단 지우고
-        const CommentSection = document.querySelector(".commentLi");
-        CommentSection.innerHTML = "";
-
-        //기존 넣고
-        renderAllComment.forEach((render) => {
-          CommentSection.innerHTML += `
-            <div class="userComment">
-              <p>${render.nickname}</p>
-              <p>${render.comment}</p>
-              <p>별점 : ${render.rating} / 10</p>
-            <button type="button" class="delBtn" onclick="DeleteComment(${render.id})">삭제</button>
-            </div>`;
-        });
-      }
-      renderComment();
-
-      //삭제 함수
-      function DeleteComment(THIS_IS_FAKE_KEY) {
-        const key = "comment_" + THIS_IS_FAKE_KEY;
-        const commentRaw = localStorage.getItem(key);
-        const password = prompt("비밀번호를 입력해주세요.");
-        if (password === null) {
-          alert("비밀번호를 입력해주세요.");
-          return;
-        }
-        if (commentRaw === null) {
-          alert(`삭제할 댓글이 없습니다. (키값: ${key})`);
-          return;
-        };
-
-        const commentData = JSON.parse(commentRaw);
-        if (commentData.pw === password) {
-          localStorage.removeItem(key);
-          alert("삭제되었습니다.");
-          window.location.reload();
-        } else {
-          alert("비밀번호가 틀렸습니다.");
-        }
-      }
-
-    </script>
 </body>
 
 </html>

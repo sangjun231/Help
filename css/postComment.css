@@ -1,1 +1,132 @@
+/* 헤더 부분 */
+:root {
+  --wine: #a01313;
+  --red: #c00909;
+  --deepDark: #7e6569;
+}
 
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  width: 100%;
+  height: auto;
+  /* background-color: black; */
+}
+
+.header {
+  width: 100%;
+  height: 10%;
+  line-height: 12vh;
+  text-align: center;
+  font-size: 6vw;
+  background-color: transparent;
+}
+
+.title {
+  font-weight: 900;
+  font-size: 8vw;
+  margin: 0;
+  filter: url(#goo);
+  position: relative;
+  letter-spacing: -0.2em;
+  color: red;
+}
+
+.title:nth-child(1) {
+  color: red;
+}
+
+.a {
+  color: red;
+}
+
+.drop {
+  width: 0.1em;
+  height: 0.1em;
+  border-radius: 0 100% 100% 100%;
+  background-color: currentColor;
+  position: absolute;
+  top: 72%;
+  animation: drop 3s infinite both;
+
+  &:nth-child(1) {
+    left: 24.5%;
+  }
+
+  &:nth-child(2) {
+    left: 42%;
+    animation-delay: -0.4s;
+  }
+
+  &:nth-child(3) {
+    left: 55%;
+    animation-delay: -1.5s;
+  }
+
+  &:nth-child(4) {
+    left: 82%;
+    animation-delay: -0.8s;
+  }
+
+  &:nth-child(5) {
+    left: 95.5%;
+    animation-delay: -1.3s;
+  }
+}
+
+@keyframes drop {
+  0% {
+    transform: translateY(0) scaleX(0.85) rotate(45deg);
+    animation-timing-function: ease-out;
+  }
+
+  60% {
+    transform: translateY(120%) scaleX(0.85) rotate(45deg);
+    animation-timing-function: ease-in;
+  }
+
+  80%,
+  100% {
+    transform: translateY(60vh) scaleX(0.85) rotate(45deg);
+  }
+}
+/* 헤더 부분 끝 */
+
+/* 리뷰 페이지 */
+.review {
+  width: 100%;
+  border: 1px solid black;
+}
+
+.commentList {
+  border: 1px solid black;
+  border-radius: 20px;
+}
+
+.userComment {
+  margin: 5px;
+
+  border: 1px solid black;
+}
+
+/* 리뷰 페이지 끝 */
+
+/* 리뷰 페이지_ 영화 이미지 불러오는 곳 */
+
+.review {
+  width: 100%;
+  height: 300px;
+}
+
+/* 리뷰 페이지_ 닉네임 아이디 패스워드 + 댓글 등록 부분 */
+
+.commentNickPwRating {
+  display: flex;
+}
+
+/* .commentUp {
+  display: flex;
+} */
