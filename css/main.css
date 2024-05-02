@@ -29,7 +29,7 @@
 body {
   width: 100%;
   height: auto;
-  /* background-color: black; */
+  background-color: black;
 
   user-select: none;
 }
