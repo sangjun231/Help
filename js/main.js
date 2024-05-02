@@ -21,12 +21,14 @@ async function fetchMovies() {
 
     movies.push(...pageResults);
   }
+
   return movies;
 }
 
 //카드 띄우기
 async function setCard(movies) {
   const content = document.querySelector(".content");
+
 
   movies.forEach((movie) => {
     const posterImg = movie.poster_path;
@@ -48,6 +50,7 @@ async function setCard(movies) {
             `
     );
   });
+
 
   //모달 창 관련
   function openModal(text) {
@@ -109,6 +112,11 @@ async function setCard(movies) {
 //fetchMovies 이후에 setCard 실행
 fetchMovies().then((movies) => {
   setCard(movies);
+});
+
+
+topButton.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
 //버튼, 엔터키 검색
