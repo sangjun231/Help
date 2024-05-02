@@ -12,7 +12,10 @@ async function fetchMovies() {
   let movies = [];
 
   for (let page = 1; page <= 3; page++) {
-    const response = await fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=27`, options);
+    const response = await fetch(
+      `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=27`,
+      options
+    );
     const responseJson = await response.json();
     const pageResults = responseJson.results;
 
@@ -24,17 +27,17 @@ async function fetchMovies() {
 //카드 띄우기
 async function setCard(movies) {
   const content = document.querySelector(".content");
-  console.log(movies);
 
   movies.forEach((movie) => {
     const posterImg = movie.poster_path;
     const title = movie.title;
     const average = movie.vote_average.toFixed(1);
+    const id = movie.id;
 
     content.insertAdjacentHTML(
       "beforeend",
       `
-     <div class="card">
+     <div class="card" id="${id}">
      <div class="back_part">
      <p class="movie_title">${title}</p>
      <p class="average"><i class="fa-solid fa-droplet water"></i>${average}</p>
@@ -45,6 +48,62 @@ async function setCard(movies) {
             `
     );
   });
+
+  //모달 창 관련
+  function openModal(text) {
+    const modal = document.getElementById("modal");
+    const modalText = document.getElementById("modalText");
+    const body = document.body;
+
+    modalText.innerHTML = text;
+    modal.style.display = "block";
+    body.classList.add("scroll");
+  }
+
+  function closeModal() {
+    const modal = document.getElementById("modal");
+    const body = document.body;
+
+    modal.style.display = "none";
+    body.classList.remove("scroll");
+  }
+
+  const closeBtn = document.getElementsByClassName("close")[0];
+  closeBtn.onclick = function () {
+    closeModal();
+  };
+
+  window.onclick = function (event) {
+    const modal = document.getElementById("modal");
+    if (event.target == modal) {
+      closeModal();
+    }
+  };
+
+  document.addEventListener("click", (event) => {
+    const viewModal = event.target.closest(".card");
+    if (viewModal) {
+      const modalId = viewModal.id;
+      const movieData = movies.find((movie) => movie.id === parseInt(modalId));
+      if (movieData) {
+        openModal(`
+          <div class="modalContent">
+            <img
+              class="movieImg"
+              src="https://image.tmdb.org/t/p/w500/${movieData.poster_path}"
+            />
+            <div class="movieInfo">
+              <p class="movieTitle" id="movieName">
+                ${movieData.title}
+              </p>
+              <p class="movieOverview">${movieData.overview}</p>
+              <p class="movieVoteAverage">Rating: ${movieData.vote_average}</p>
+            </div>
+          </div>`);
+      }
+    }
+  });
+  //모달창 관련 여기까지
 }
 
 //fetchMovies 이후에 setCard 실행
@@ -81,7 +140,11 @@ function search() {
   }
 
   for (let i = 0; i < card.length; i++) {
-    if (title[i].textContent.toLowerCase().includes(searchMovie.value.toLowerCase())) {
+    if (
+      title[i].textContent
+        .toLowerCase()
+        .includes(searchMovie.value.toLowerCase())
+    ) {
       card[i].style.display = "flex";
     } else {
       card[i].style.display = "none";
