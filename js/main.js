@@ -29,7 +29,6 @@ async function fetchMovies() {
 async function setCard(movies) {
   const content = document.querySelector(".content");
 
-
   movies.forEach((movie) => {
     const posterImg = movie.poster_path;
     const title = movie.title;
@@ -50,7 +49,6 @@ async function setCard(movies) {
             `
     );
   });
-
 
   //모달 창 관련
   function openModal(text) {
@@ -112,11 +110,6 @@ async function setCard(movies) {
 //fetchMovies 이후에 setCard 실행
 fetchMovies().then((movies) => {
   setCard(movies);
-});
-
-
-topButton.addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
 //버튼, 엔터키 검색

@@ -1,4 +1,3 @@
-
 @font-face {
   font-family: "Daughter_handwriting";
   src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/naverfont_03@1.0/Daughter_handwriting.woff")
@@ -23,14 +22,12 @@
 * {
   padding: 0;
   margin: 0;
-
 }
 
 body {
   width: 100%;
   height: auto;
-  /* background-color: black; */
-
+  background-color: black;
   user-select: none;
 }
 
@@ -42,7 +39,6 @@ body {
   font-size: 6vw;
   background-color: transparent;
 }
-
 
 .header a {
   text-decoration: none;
@@ -75,7 +71,6 @@ body {
   position: absolute;
   top: 72%;
   animation: drop 3s infinite both;
-
 }
 
 &:nth-child(1) {
@@ -101,7 +96,6 @@ body {
 &:nth-child(5) {
   left: 95.5%;
   animation-delay: -1.3s;
-
 }
 
 @keyframes drop {
@@ -261,6 +255,7 @@ body {
 }
 
 .modalContent {
+  color: black;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -291,4 +286,3 @@ body.scroll {
   overflow: hidden;
 }
 /* 모달 CSS 여기까지 */
-
