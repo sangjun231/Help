@@ -110,7 +110,7 @@
         } else {
 
         const data = {
-          id : commentId,
+          // id : commentId,
           nickname: nickname,
           pw: pw,
           rating: rating,
@@ -157,7 +157,7 @@
               <p>${render.nickname}</p>
               <p>${render.comment}</p>
               <p>별점 : ${render.rating} / 10</p>
-              <button type="button" class=DelBtn>삭제</button>
+              <button type="button" class="DelBtn" id = ${render.id}>삭제</button>
             </div>`;
         });
       }
@@ -168,48 +168,7 @@
       item.addEventListener('click', DeleteComment)
     );
 
-    //삭제 함수
-    function DeleteComment() {
 
-      // const needPwdel = prompt("댓글을 삭제하려면 입력한 비밀번호를 입력하세요.", "");
-      //   if (needPwdel === null || needPwdel === "") {
-      //       alert("비밀번호를 입력하지 않았습니다.")
-      //       return;
-      //   }
-
-
-
-
-      // if (){}
-
-      //배열 전부 불러오기
-      const needData = loadComments();
-      console.log(needData);
-
-
-
-      localStorage.removeItem('key');
-
-      
-
-
-    }
-
-
-    async function clickDeleteBtn(event) {
-        const id = event.target.dataset.id
-
-        const comment = await getDoc(doc(db, "webComments", id));
-        const data = comment.data();
-
-        if (data.pw === needPwdel) {
-            await deleteDoc(doc(db, "webComments", id));
-            alert("삭제되었습니다.");
-            window.location.reload();
-        } else {
-            alert("비밀번호가 다릅니다.");
-        }
-    }
 
 
 
