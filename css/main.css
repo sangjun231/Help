@@ -286,3 +286,13 @@ body.scroll {
   overflow: hidden;
 }
 /* 모달 CSS 여기까지 */
+
+.top_button {
+  position: fixed;
+  bottom: 2vh;
+  right: 2vw;
+  font-size: 4rem;
+  background: var(--wine);
+  border-radius: 50%;
+  padding: 20px 14px;
+}
