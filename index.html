@@ -3,37 +3,51 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>horror movie</title>
+    <link rel="stylesheet" href="./css/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <script type="module" src="./js/main.js"></script>
   </head>
   <body>
-    <div class="upper">
-      <header>
-        <h1>내배캠 최고 평점 영화 콜렉션 by TMDB</h1>
-      </header>
-      <div class="search">
-        <label>영화 검색 : </label>
-        <input
-          type="text"
-          id="searchInput"
-          placeholder="영화 제목을 검색해주세요."
-          autofocus
-        />
-        <button type="button" id="searchBtn">검색</button>
+    <div class="header">
+      <a href="./main.html">
+        <h1 class="title">
+          Help the Pro9rammers!
+          <span class="drop"></span>
+          <span class="drop"></span>
+          <span class="drop"></span>
+          <span class="drop"></span>
+        </h1>
+      </a>
+    </div>
+
+    <!-- 모달 관련 -->
+    <div class="modal" id="modal">
+      <div class="modalContent">
+        <span class="close">&times;</span>
+        <p id="modalText"></p>
+        <button onclick="location.href='review.html'" class="modalButton">
+          more...
+        </button>
       </div>
     </div>
-    <div class="cardList" id="cardList">
-      <div class="movieCard" id="movieCard">
-        <img />
-        <h3>영화 제목</h3>
-        <p>영화 내용</p>
-        <p>평점 : 3.33</p>
-      </div>
-      <div class="movieCard" id="movieCard">
-        <img />
-        <h3>영화 제목</h3>
-        <p>영화 내용</p>
-        <p>평점 : 3.33</p>
-      </div>
+    <!-- 모달 관련 여기까지 -->
+
+    <div class="movie_search">
+      <input
+        type="search"
+        class="search_input"
+        placeholder="영화 제목 검색"
+        autofocus
+      />
+      <button class="search_button">제목검색</button>
     </div>
+    <div class="content"></div>
+
+    <button class="top_button">top</button>
   </body>
 </html>
+
