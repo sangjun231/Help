@@ -92,6 +92,7 @@
       function postingComment() {
         const nickname = document.querySelector("#nickname").value;
         const pw = document.querySelector("#pw").value;
+        //숫자 표기 소수점을 입력해도 소수점 자리 삭제
         const rating = parseInt(document.querySelector("#rating").value);
         const comment = document.querySelector("#comment").value;
         const commentId = Date.now().toString();
@@ -109,6 +110,7 @@
         } else {
 
         const data = {
+          id : commentId,
           nickname: nickname,
           pw: pw,
           rating: rating,
@@ -142,6 +144,7 @@
       // 불러왔으니까 이제 html에 표기
       function renderComment() {
         const renderAllComment = loadComments();
+        // console.log(renderAllComment);
 
         //일단 지우고
         const CommentSection = document.querySelector(".commentLi");
@@ -154,10 +157,61 @@
               <p>${render.nickname}</p>
               <p>${render.comment}</p>
               <p>별점 : ${render.rating} / 10</p>
+              <button type="button" class=DelBtn>삭제</button>
             </div>`;
         });
       }
       renderComment();
+
+      //삭제하려면
+      document.querySelectorAll('.DelBtn').forEach ((item)=>
+      item.addEventListener('click', DeleteComment)
+    );
+
+    //삭제 함수
+    function DeleteComment() {
+
+      // const needPwdel = prompt("댓글을 삭제하려면 입력한 비밀번호를 입력하세요.", "");
+      //   if (needPwdel === null || needPwdel === "") {
+      //       alert("비밀번호를 입력하지 않았습니다.")
+      //       return;
+      //   }
+
+
+
+
+      // if (){}
+
+      //배열 전부 불러오기
+      const needData = loadComments();
+      console.log(needData);
+
+
+
+      localStorage.removeItem('key');
+
+      
+
+
+    }
+
+
+    async function clickDeleteBtn(event) {
+        const id = event.target.dataset.id
+
+        const comment = await getDoc(doc(db, "webComments", id));
+        const data = comment.data();
+
+        if (data.pw === needPwdel) {
+            await deleteDoc(doc(db, "webComments", id));
+            alert("삭제되었습니다.");
+            window.location.reload();
+        } else {
+            alert("비밀번호가 다릅니다.");
+        }
+    }
+
+
 
     </script>
   </body>
