@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link href="./css/postComment.css" rel="stylesheet" type="text/css" /> -->
+    <title>review page</title>
+    <style>
+      .review {
+        width: 100%;
+        border: 1px solid black;
+      }
+
+      .commentList {
+        border: 1px solid black;
+        border-radius: 20px;
+      }
+
+      .userComment {
+        margin: 5px;
+
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <a href="index.html">
+        <div class="backBtn"></div>
+      </a>
+      <div class="review">
+        <p>영화 이미지 불러오는 공간</p>
+      </div>
+      <div class="commentNickPwRating">
+        <div class="nickname">
+          <label for="nickname">Nickname:</label>
+          <input type="text" name="nickname" id="nickname" required />
+        </div>
+        <div class="pw">
+          <label for="pw">PW:</label>
+          <input type="text" name="pw" id="pw" required />
+        </div>
+        <div class="rating">
+          <label for="rating">rating:</label>
+          <input
+            type="number"
+            min="0"
+            max="10"
+            step="1"
+            name="rating"
+            id="rating"
+            required
+          />
+        </div>
+      </div>
+      <div class="commentUp">
+        <div class="comment">
+          <label for="comment"></label>
+          <input
+            id="comment"
+            type="text"
+            placeholder="댓글을 입력하세요."
+            style="width: 80%; height: 40px; font-size: 18px"
+          />
+        </div>
+        <button id="postingBtn" type="button" button class="button">
+          <span class="inner"><strong>댓글 등록</strong></span>
+        </button>
+      </div>
+      <div class="commentList">
+        <h3>댓글 목록</h3>
+        <div class = "commentLi">
+        <!-- <div class="userComment">
+          <p>최혜미</p>
+          <p>영화 개꿀잼이용</p>
+          <p>별점 : 2 / 10</p>
+        </div>
+        <div class="userComment">
+          <p>최혜미</p>
+          <p>영화 개꿀잼이용</p>
+          <p>별점 : 2 / 10</p>
+        </div> -->
+      </div>
+    </div>
+
+    <script type="module">
+      //댓글 등록을 각각의 키를 만들어서 설정
+      document
+        .querySelector("#postingBtn")
+        .addEventListener("click", postingComment);
+
+      function postingComment() {
+        const nickname = document.querySelector("#nickname").value;
+        const pw = document.querySelector("#pw").value;
+        const rating = document.querySelector("#rating").value;
+        const comment = document.querySelector("#comment").value;
+        const commentId = Date.now().toString();
+
+        //유효성 검사
+        if (!nickname || !pw || !rating || !comment) {
+          alert("닉네임, 비밀번호, 평점, 댓글을 모두 입력해주세요.");
+        } else if(rating > 10 || rating < 0 || !rating == 'number') {
+          alert("평점은 0점부터 10점까지 해주세요.")
+        }
+
+        const data = {
+          nickname: nickname,
+          pw: pw,
+          rating: rating,
+          comment: comment,
+        };
+
+        const key = "comment_" + commentId;
+        localStorage.setItem(key, JSON.stringify(data));
+
+        alert("댓글이 작성되었습니다.");
+        window.location.reload();
+      }
+
+      //불러오기
+      function loadComments() {
+        const allComments = [];
+        for (let i = 0; i < localStorage.length; i++) {
+          const key = localStorage.key(i);
+          if (key.startsWith("comment_")) {
+            //가져오고
+            const commentAllDataString = localStorage.getItem(key);
+            //파싱 한 번 더 필요하니까
+            const commentAllDataArray = JSON.parse(commentAllDataString);
+            //그리고 그걸 넣기
+            allComments.push(commentAllDataArray);
+          }
+        }
+        return allComments;
+      }
+
+      // 불러왔으니까 이제 html에 표기
+      function renderComment() {
+        const renderAllComment = loadComments();
+
+        //일단 지우고
+        const CommentSection = document.querySelector(".commentLi");
+        CommentSection.innerHTML = "";
+
+        //기존 넣고
+        renderAllComment.forEach((render) => {
+          CommentSection.innerHTML += `
+            <div class="userComment">
+              <p>${render.nickname}</p>
+              <p>${render.comment}</p>
+              <p>별점 : ${render.rating} / 10</p>
+            </div>`;
+        });
+      }
+      renderComment();
+
+    </script>
+  </body>
+</html>
