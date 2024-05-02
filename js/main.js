@@ -1,37 +1,56 @@
-const getMovie = async (val = "") => {
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3ZTgyODI3ZDZmZmE5NDRjNDU2N2FlODIzZTE1ZTJkZiIsInN1YiI6IjY2MjYyNTI4ZWI3OWMyMDE2NWQ0M2Q1MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.bdvFO8e_naip64AYTGlq-zQSBQdh2vSqX6BTdRn-yH4",
-    },
-  };
+const options = {
+  method: "GET",
+  headers: {
+    accept: "application/json",
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NWU4MzRhY2Q0Mjk5MDk0MzI4ZmMxZTUyZjVhYTBmMyIsInN1YiI6IjY2MjZmZDE2MmUyYjJjMDE2MzY3MjA4ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.wl8aFUtCjzsNdhNXgwn4Aw1kdLas3x17gn0YiTIfoNU",
+  },
+};
 
-  const response = await fetch(
-    "https://api.themoviedb.org/3/movie/top_rated?language=ko-KR&page=1",
-    options
-  );
-  const json = await response.json();
+const topButton = document.querySelector(".top_button");
 
-  const responseArray = json.results;
-  const movieInfo = responseArray
-    .map((movieInfo, i) => {
-      if (movieInfo.title.includes(val))
-        return `
-      <div class="movieInfo" id="${movieInfo.id}">
-        <img class="movieImg" src="https://image.tmdb.org/t/p/w500/${movieInfo.poster_path}" />
-        <p class="movieTitle" id="movieName">${movieInfo.title}</p>
-        <p class="movieOverview">${movieInfo.overview}</p>
-        <p class="movieVoteAverage">Rating: ${movieInfo.vote_average}</p>
-      </div>`;
-    })
-    .join("");
+async function fetchMovies() {
+  let movies = [];
 
-  const movieSection = document.getElementById("movieSection");
-  movieSection.innerHTML = "";
-  movieSection.innerHTML = movieInfo;
+  for (let page = 1; page <= 3; page++) {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=27`,
+      options
+    );
+    const responseJson = await response.json();
+    const pageResults = responseJson.results;
 
+    movies.push(...pageResults);
+  }
+
+  return movies;
+}
+
+async function setCard(movies) {
+  const content = document.querySelector(".content");
+  console.log(movies);
+
+  movies.forEach((movie) => {
+    const posterImg = movie.poster_path;
+    const title = movie.title;
+    const average = movie.vote_average;
+    const id = movie.id;
+
+    content.insertAdjacentHTML(
+      "beforeend",
+      `
+     <div class="card" id="${id}">
+     <div class="back_part">
+     <p>${title}</p>
+     <p>${average}</p>
+     </div>
+     <img class="poster_img" src="http://image.tmdb.org/t/p/w400/${posterImg}" alt="영화포스터" />
+     </div>
+            `
+    );
+  });
+
+  //모달 창 관련
   function openModal(text) {
     const modal = document.getElementById("modal");
     const modalText = document.getElementById("modalText");
@@ -57,13 +76,10 @@ const getMovie = async (val = "") => {
   };
 
   document.addEventListener("click", (event) => {
-    const viewModal = event.target.closest(".movieInfo");
+    const viewModal = event.target.closest(".card");
     if (viewModal) {
       const modalId = viewModal.id;
-      const movieData = responseArray.find(
-        (movie) => movie.id === parseInt(modalId)
-      );
-
+      const movieData = movies.find((movie) => movie.id === parseInt(modalId));
       if (movieData) {
         openModal(`
         <div class="movieInfo" id="${modalId}">
@@ -76,15 +92,13 @@ const getMovie = async (val = "") => {
       }
     }
   });
+  //모달창 관련 여기까지
+}
 
-  const searchInput = document.getElementById("Text");
-  const searchButton = document.getElementById("Button");
+fetchMovies().then((movies) => {
+  setCard(movies);
+});
 
-  searchButton.addEventListener("click", (event) => {
-    const val = searchInput.value;
-    console.log(val);
-    getMovie(val);
-  });
-};
-
-await getMovie();
+topButton.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});

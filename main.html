@@ -3,27 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>horror movie</title>
     <link rel="stylesheet" href="./css/main.css" />
-    <title>MovieSearch</title>
+    <script type="module" src="./js/main.js"></script>
   </head>
   <body>
-    <script src="./js/main.js" type="module"></script>
+    <div class="header">
+      <h1 class="title">
+        Help The Pro9rammers!
+        <span class="drop"></span>
+        <span class="drop"></span>
+        <span class="drop"></span>
+        <span class="drop"></span>
+      </h1>
+    </div>
 
-    <header>
-      <h1 class="pageTitle">MovieList</h1>
-      <div class="headDiv">
-        <input type="text" class="searchBar" id="Text" />
-        <button class="searchBtn" id="Button">검색</button>
-      </div>
-    </header>
-
+    <!-- 모달 관련 -->
     <div class="modal" id="modal">
       <div class="modalContent">
         <span class="close">&times;</span>
         <p id="modalText"></p>
+        <button class="modalButton">more...</button>
       </div>
     </div>
+    <!-- 모달 관련 여기까지 -->
 
-    <section id="movieSection"></section>
+    <form class="movie_search">
+      <input type="search" placeholder="영화 제목 검색" />
+      <button class="search_button">제목검색</button>
+    </form>
+    <div class="content"></div>
+
+    <button class="top_button">top</button>
   </body>
 </html>
