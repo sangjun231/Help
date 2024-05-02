@@ -156,6 +156,13 @@ body {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
+.movieInfo {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  flex: 1;
+}
+
 .movieTitle {
   font-size: 100px;
 }
@@ -180,11 +187,15 @@ body {
 }
 
 .modalContent {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
   background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
+  margin: 2% auto;
   border: 1px solid #888;
-  width: 30%;
+  width: 80%;
+  max-width: 1180px;
+  max-height: 805px;
   position: relative;
 }
 

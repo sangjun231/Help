@@ -66,7 +66,7 @@ async function setCard(movies) {
     const body = document.body;
 
     modal.style.display = "none";
-    body.classList.add("scroll");
+    body.classList.remove("scroll");
   }
 
   const closeBtn = document.getElementsByClassName("close")[0];
@@ -88,13 +88,19 @@ async function setCard(movies) {
       const movieData = movies.find((movie) => movie.id === parseInt(modalId));
       if (movieData) {
         openModal(`
-        <div class="movieInfo" id="${modalId}">
-          <img class="movieImg" src="https://image.tmdb.org/t/p/w500/${movieData.poster_path}" />
-          <p class="movieTitle" id="movieName">${movieData.title}</p>
-          <p class="movieOverview">${movieData.overview}</p>
-          <p class="movieVoteAverage">Rating: ${movieData.vote_average}</p>
-        </div>
-      `);
+          <div class="modalContent">
+            <img
+              class="movieImg"
+              src="https://image.tmdb.org/t/p/w500/${movieData.poster_path}"
+            />
+            <div class="movieInfo">
+              <p class="movieTitle" id="movieName">
+                ${movieData.title}
+              </p>
+              <p class="movieOverview">${movieData.overview}</p>
+              <p class="movieVoteAverage">Rating: ${movieData.vote_average}</p>
+            </div>
+          </div>`);
       }
     }
   });
