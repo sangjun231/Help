@@ -201,4 +201,8 @@ body {
   text-decoration: none;
   cursor: pointer;
 }
+
+body.scroll {
+  overflow: hidden;
+}
 /* 모달 CSS 여기까지 */
