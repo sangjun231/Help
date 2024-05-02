@@ -12,10 +12,7 @@ async function fetchMovies() {
   let movies = [];
 
   for (let page = 1; page <= 3; page++) {
-    const response = await fetch(
-      `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=27`,
-      options
-    );
+    const response = await fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=27`, options);
     const responseJson = await response.json();
     const pageResults = responseJson.results;
 
@@ -28,7 +25,6 @@ async function fetchMovies() {
 //카드 띄우기
 async function setCard(movies) {
   const content = document.querySelector(".content");
-
 
   movies.forEach((movie) => {
     const posterImg = movie.poster_path;
@@ -50,7 +46,6 @@ async function setCard(movies) {
             `
     );
   });
-
 
   //모달 창 관련
   function openModal(text) {
@@ -114,11 +109,6 @@ fetchMovies().then((movies) => {
   setCard(movies);
 });
 
-
-topButton.addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
-
 //버튼, 엔터키 검색
 const searchButton = document.querySelector(".search_button");
 const searchMovie = document.querySelector(".search_input");
@@ -148,11 +138,7 @@ function search() {
   }
 
   for (let i = 0; i < card.length; i++) {
-    if (
-      title[i].textContent
-        .toLowerCase()
-        .includes(searchMovie.value.toLowerCase())
-    ) {
+    if (title[i].textContent.toLowerCase().includes(searchMovie.value.toLowerCase())) {
       card[i].style.display = "flex";
     } else {
       card[i].style.display = "none";
