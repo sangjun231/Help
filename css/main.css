@@ -3,27 +3,32 @@
   --red: #c00909;
   --deepDark: #7e6569;
 }
+
 * {
   padding: 0;
   margin: 0;
+  user-select: none;
 }
+
 body {
   width: 100%;
   height: auto;
-  /* background-color: black; */
+  background-color: black;
 }
 
 .header {
   width: 100%;
-  height: 10%;
+  height: 15%;
   line-height: 12vh;
   text-align: center;
   font-size: 6vw;
   background-color: transparent;
 }
+
 .header a {
   text-decoration: none;
 }
+
 .title {
   font-weight: 900;
   font-size: 8vw;
@@ -37,6 +42,7 @@ body {
 .title:nth-child(1) {
   color: red;
 }
+
 .a {
   color: red;
 }
@@ -49,30 +55,31 @@ body {
   position: absolute;
   top: 72%;
   animation: drop 3s infinite both;
+}
 
-  &:nth-child(1) {
-    left: 24.5%;
-  }
+&:nth-child(1) {
+  color: red;
+  left: 24.5%;
+}
 
-  &:nth-child(2) {
-    left: 42%;
-    animation-delay: -0.4s;
-  }
+&:nth-child(2) {
+  left: 42%;
+  animation-delay: -0.4s;
+}
 
-  &:nth-child(3) {
-    left: 55%;
-    animation-delay: -1.5s;
-  }
+&:nth-child(3) {
+  left: 55%;
+  animation-delay: -1.5s;
+}
 
-  &:nth-child(4) {
-    left: 82%;
-    animation-delay: -0.8s;
-  }
+&:nth-child(4) {
+  left: 82%;
+  animation-delay: -0.8s;
+}
 
-  &:nth-child(5) {
-    left: 95.5%;
-    animation-delay: -1.3s;
-  }
+&:nth-child(5) {
+  left: 95.5%;
+  animation-delay: -1.3s;
 }
 
 @keyframes drop {
@@ -80,10 +87,12 @@ body {
     transform: translateY(0) scaleX(0.85) rotate(45deg);
     animation-timing-function: ease-out;
   }
+
   60% {
     transform: translateY(120%) scaleX(0.85) rotate(45deg);
     animation-timing-function: ease-in;
   }
+
   80%,
   100% {
     transform: translateY(60vh) scaleX(0.85) rotate(45deg);
@@ -92,47 +101,95 @@ body {
 
 .movie_search {
   width: 100%;
-  background-color: grey;
+  border-bottom: 1px solid white;
   height: 6vw;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .movie_search input {
   width: 20vw;
   height: 5vh;
   margin-right: 1vw;
 }
+
 .search_button {
   font-size: 1vw;
   padding: 0.5% 1.8%;
 }
 
 .content {
-  /* background-color: blue; */
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-}
-.card {
-  background-color: black;
-  display: flex;
-  width: 20vw;
-  margin: 4vh 1.5vw;
-}
-.poster_img {
-  width: 80%;
+  width: 95%;
   margin: 4vh auto;
-}
-.poster_img:hover {
-  opacity: 50%;
+  grid-template-columns: repeat(auto-fill, minmax(20vw, auto));
+  gap: 10px 20px;
 }
 
-.top_button {
-  position: fixed;
-  bottom: 2vh;
-  right: 2vw;
-  font-size: 4rem;
-  background: var(--wine);
-  border-radius: 50%;
-  padding: 20px 14px;
+.card {
+  display: flex;
+  margin: 2rem 0;
+  justify-content: space-around;
+  transform-style: preserve-3d;
+  perspective: 1000;
+}
+.card:hover {
+  cursor: url(../img/skeleton-cursor.png) 20 30, auto;
+  caret-color: white;
+}
+
+.poster_img {
+  transform: rotateY(0deg);
+  z-index: 2;
+  opacity: 1;
+}
+
+.back_part {
+  background-color: black;
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.5vw;
+  justify-content: center;
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+  /* background-color: blue; */
+  width: 75%;
+  height: 98%;
+  line-height: 10vh;
+}
+
+.card:hover .poster_img {
+  z-index: 1;
+  opacity: 0;
+  /* transform: rotateY(180deg); */
+}
+.card:hover .back_part {
+  z-index: 2;
+  opacity: 0.7;
+  transform: translateZ(180px);
+}
+
+.poster_img,
+.back_part {
+  backface-visibility: hidden;
+  transition: all 1s;
+}
+
+.movie_title {
+  font-weight: bold;
+}
+.average {
+  width: 40%;
+  margin: 0 auto;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.average .water {
+  color: var(--red);
 }

@@ -29,7 +29,7 @@ async function setCard(movies) {
   movies.forEach((movie) => {
     const posterImg = movie.poster_path;
     const title = movie.title;
-    const average = movie.vote_average;
+    const average = movie.vote_average.toFixed(1);
 
     content.insertAdjacentHTML(
       "beforeend",
@@ -37,9 +37,10 @@ async function setCard(movies) {
      <div class="card">
      <div class="back_part">
      <p class="movie_title">${title}</p>
-     <p>${average}</p>
+     <p class="average"><i class="fa-solid fa-droplet water"></i>${average}</p>
      </div>
      <img class="poster_img" src="http://image.tmdb.org/t/p/w400/${posterImg}" alt="영화포스터" />
+     </div>
      </div>
             `
     );
