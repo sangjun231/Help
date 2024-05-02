@@ -36,11 +36,15 @@ async function setCard(movies) {
       "beforeend",
       `
      <div class="card">
-     <div class="back_part">
-     <p>${title}</p>
-     <p>${average}</p>
-     </div>
      <img class="poster_img" src="http://image.tmdb.org/t/p/w400/${posterImg}" alt="영화포스터" />
+     <div class="back_part">
+     <p class="back_title">${title}</p>                
+     <p class="back_average">${average}</p>
+     </div>
+     
+                
+     
+     
      </div>
             `
     );
