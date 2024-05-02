@@ -21,6 +21,9 @@ body {
   font-size: 6vw;
   background-color: transparent;
 }
+.header a {
+  text-decoration: none;
+}
 .title {
   font-weight: 900;
   font-size: 8vw;
@@ -30,6 +33,7 @@ body {
   letter-spacing: -0.2em;
   color: red;
 }
+
 .title:nth-child(1) {
   color: red;
 }
