@@ -269,7 +269,7 @@ body {
 }
 
 .modalContent2 {
-  color: black;
+  color: var(--deepDark);
   display: flex;
   flex-direction: row;
   align-items: flex-start;
