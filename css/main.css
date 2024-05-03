@@ -268,6 +268,20 @@ body {
   position: relative;
 }
 
+.modalContent2 {
+  color: black;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  background-color: #fefefe;
+  margin: 2% auto;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 1180px;
+  max-height: 805px;
+  position: relative;
+}
+
 .close {
   color: #aaa;
   float: right;

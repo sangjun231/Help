@@ -12,7 +12,10 @@ async function fetchMovies() {
   let movies = [];
 
   for (let page = 1; page <= 3; page++) {
-    const response = await fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=27`, options);
+    const response = await fetch(
+      `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=27`,
+      options
+    );
     const responseJson = await response.json();
     const pageResults = responseJson.results;
 
@@ -80,34 +83,38 @@ async function setCard(movies) {
 
   document.addEventListener("click", (event) => {
     const viewModal = event.target.closest(".card");
-    if (viewModal) {
-      const modalId = viewModal.id;
-      const movieData = movies.find((movie) => movie.id === parseInt(modalId));
-      if (movieData) {
-        openModal(`
-          <div class="modalContent">
-            <img
-              class="movieImg"
-              src="https://image.tmdb.org/t/p/w500/${movieData.poster_path}"
-            />
-            <div class="movieInfo">
-              <p class="movieTitle" id="movieName">
-                ${movieData.title}
-              </p>
-              <p class="movieOverview">${movieData.overview}</p>
-              <p class="movieVoteAverage">Rating: ${movieData.vote_average}</p>
-            </div>
-          </div>`);
-      }
+    const modalId = viewModal.id;
+    const movieData = movies.find((movie) => movie.id === parseInt(modalId));
+
+    if (viewModal && movieData) {
+      openModal(`
+        <div class="modalContent2" id="${modalId}">
+          <img
+            class="movieImg"
+            src="https://image.tmdb.org/t/p/w500/${movieData.poster_path}"
+          />
+          <div class="movieInfo">
+            <p class="movieTitle" id="movieName">
+              ${movieData.title}
+            </p>
+            <p class="movieOverview">${movieData.overview}</p>
+            <p class="movieVoteAverage">Rating: ${movieData.vote_average}</p>
+          </div>
+        </div>`);
     }
+  });
+
+  const button = document.querySelector(".modalButton");
+  button.addEventListener("click", (event) => {
+    const viewModal = document.querySelector("#modal .modalContent2"); //id 찾고 -> 하위 class까지 검색 -> 태그까지도 가능
+    const movieId = viewModal.id;
+    window.location.href = `review.html?movieId=${movieId}`;
   });
   //모달창 관련 여기까지
 }
 
 //fetchMovies 이후에 setCard 실행
-fetchMovies().then((movies) => {
-  setCard(movies);
-});
+fetchMovies().then((movies) => setCard(movies));
 
 //버튼, 엔터키 검색
 const searchButton = document.querySelector(".search_button");
@@ -138,7 +145,11 @@ function search() {
   }
 
   for (let i = 0; i < card.length; i++) {
-    if (title[i].textContent.toLowerCase().includes(searchMovie.value.toLowerCase())) {
+    if (
+      title[i].textContent
+        .toLowerCase()
+        .includes(searchMovie.value.toLowerCase())
+    ) {
       card[i].style.display = "flex";
     } else {
       card[i].style.display = "none";
