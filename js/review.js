@@ -112,8 +112,11 @@ function renderComment() {
             <div class="userComment">
               <p>작성자 : ${render.nickname}</p>
               <p>${render.comment}</p>
-              <p>별점 : ${render.rating} / 10</p>
-            <button type="button" class="delBtn" onclick="DeleteComment(${render.id})">삭제</button>
+              <div class="delArea">
+              <p>별점 : ${render.rating} / 10 </p>
+              <button type="button" class="delBtn" onclick="DeleteComment(${render.id})">삭제</button>
+              </div>             
+                    
             </div>`;
   });
 }

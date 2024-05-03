@@ -98,6 +98,7 @@ body {
     transform: translateY(60vh) scaleX(0.85) rotate(45deg);
   }
 }
+
 /* 헤더 부분 끝 */
 
 /* 리뷰 페이지 */
@@ -113,24 +114,37 @@ body {
   display: flex;
 }
 
-.posterSection, .infoSection {
+.posterSection {
   border: yellow solid 3px;
   background-color: #a01313;
-  width: 50%;
+  width: 35%;
+  height: 150px;
+  margin: 20px;
+  padding: 20px;
+}
+
+.infoSection {
+  border: yellow solid 3px;
+  background-color: #a01313;
+  width: 60%;
   height: 150px;
   margin: 20px;
   padding: 20px;
 }
 
 #postingBtn {
+  align-items: center;
+  justify-content: center;
   display: flex;
 }
+
 .commentList {
   border: 1px solid white;
-  
+
 }
 
 .userComment {
+  position: relative;
   margin: 5px;
   border: 1px solid white;
 }
@@ -151,6 +165,11 @@ body {
   max-width: 1000px;
   margin: 0 auto;
 }
+
+.commentForm {
+  border: 1px white solid;
+}
+
 .commentNickPwRating {
   justify-content: space-between;
   align-items: center;
@@ -159,12 +178,24 @@ body {
 }
 
 .commentUp textarea {
+  resize: none;
   width: 100%;
   height: 100px;
-  
+}
 
-} 
- 
+.commentUp #postingBtn {
+  width: 100%;
+  height: 40px;
+}
+
+.commentUp #postingBtn .inner {
+  align-items: center;
+}
+
+.delArea {
+  display: flex;
+  justify-content: space-between;
+}
 
 .commentList {
   width: 100%;
