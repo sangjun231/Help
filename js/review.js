@@ -1,3 +1,55 @@
+const options = {
+  method: "GET",
+  headers: {
+    accept: "application/json",
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NWU4MzRhY2Q0Mjk5MDk0MzI4ZmMxZTUyZjVhYTBmMyIsInN1YiI6IjY2MjZmZDE2MmUyYjJjMDE2MzY3MjA4ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.wl8aFUtCjzsNdhNXgwn4Aw1kdLas3x17gn0YiTIfoNU",
+  },
+};
+
+//리스트 불러오기
+async function fetchMovies() {
+  let movies = [];
+
+  for (let page = 1; page <= 3; page++) {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=27`,
+      options
+    );
+    const responseJson = await response.json();
+    const pageResults = responseJson.results;
+
+    movies.push(...pageResults);
+  }
+
+  let urlParams = new URL(location.href).searchParams;
+  const name = urlParams.get("movieId");
+  console.log(name);
+  // const viewModal = document.querySelector(".review");
+  // if (viewModal) {
+  //   const modalId = viewModal.id;
+  //   const movieData = movies.find((movie) => movie.id === parseInt(modalId));
+  //   if (movieData) {
+  //     openModal(`
+  //         <div class="modalContent2" id="${modalId}">
+  //           <img
+  //             class="movieImg"
+  //             src="https://image.tmdb.org/t/p/w500/${movieData.poster_path}"
+  //           />
+  //           <div class="movieInfo">
+  //             <p class="movieTitle" id="movieName">
+  //               ${movieData.title}
+  //             </p>
+  //             <p class="movieOverview">${movieData.overview}</p>
+  //             <p class="movieVoteAverage">Rating: ${movieData.vote_average}</p>
+  //           </div>
+  //         </div>`);
+  //   }
+  // }
+}
+
+fetchMovies();
+
 document.querySelector("#postingBtn").addEventListener("click", postingComment);
 
 function postingComment() {
@@ -90,3 +142,9 @@ function DeleteComment(THIS_IS_FAKE_KEY) {
     alert("비밀번호가 틀렸습니다.");
   }
 }
+
+function m(mId) {
+  console.log(mId);
+}
+
+m(mId);

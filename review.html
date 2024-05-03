@@ -5,7 +5,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="./css/postComment.css" rel="stylesheet" type="text/css" />
-  <script defer src="./js/review.js"></script>
+  <script>
+    const urlP = new URLSearchParams(window.location.search);
+    const mId = urlP.get('mId');
+  </script>
+  <script defer src="./js/review.js" type="module"></script>
   <title>review page</title>
   <style>
     .review {
