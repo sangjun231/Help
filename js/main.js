@@ -50,6 +50,28 @@ async function setCard(movies) {
     );
   });
 
+  // 배경음악 관련
+  document.querySelector("#bgmBtn").addEventListener("click", () => {
+    const audioContainer = document.querySelector("#bgm");
+    audioContainer.loop = true;
+    audioContainer.volume = 0.1;
+    audioContainer.play();
+  });
+
+  document.querySelector("#muteBtn").addEventListener("click", () => {
+    const audioContainer = document.querySelector("#bgm");
+    audioContainer.pause();
+  });
+
+  document
+    .querySelector("#volume-control")
+    .addEventListener("change", (event) => {
+      const audioContainer = document.querySelector("#bgm");
+      audioContainer.volume = event.target.value / 10;
+    });
+
+  // 배경 음악 관련 끝
+
   //모달 창 관련
   function openModal(text) {
     const modal = document.getElementById("modal");
