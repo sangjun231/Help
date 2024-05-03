@@ -50,7 +50,7 @@ async function fetchMovies() {
 
 fetchMovies();
 
-document.querySelector("#postingBtn").addEventListener("click", postingComment);
+document.querySelector(".commentForm").addEventListener("submit", postingComment);
 
 function postingComment() {
   const nickname = document.querySelector("#nickname").value;
@@ -110,7 +110,7 @@ function renderComment() {
   renderAllComment.forEach((render) => {
     CommentSection.innerHTML += `
             <div class="userComment">
-              <p>${render.nickname}</p>
+              <p>작성자 : ${render.nickname}</p>
               <p>${render.comment}</p>
               <p>별점 : ${render.rating} / 10</p>
             <button type="button" class="delBtn" onclick="DeleteComment(${render.id})">삭제</button>

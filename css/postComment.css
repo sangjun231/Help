@@ -15,9 +15,10 @@
 }
 
 body {
+  background-color: black;
+  color: white;
   width: 100%;
   height: auto;
-  /* background-color: black; */
 }
 
 .header {
@@ -100,20 +101,38 @@ body {
 /* 헤더 부분 끝 */
 
 /* 리뷰 페이지 */
-.review {
-  width: 100%;
-  border: 1px solid black;
+
+.main {
+  margin: 50px;
 }
 
+.review {
+  max-width: 1000px;
+  margin: 0 auto;
+  border: 1px solid white;
+  display: flex;
+}
+
+.posterSection, .infoSection {
+  border: yellow solid 3px;
+  background-color: #a01313;
+  width: 50%;
+  height: 150px;
+  margin: 20px;
+  padding: 20px;
+}
+
+#postingBtn {
+  display: flex;
+}
 .commentList {
-  border: 1px solid black;
-  border-radius: 20px;
+  border: 1px solid white;
+  
 }
 
 .userComment {
   margin: 5px;
-
-  border: 1px solid black;
+  border: 1px solid white;
 }
 
 /* 리뷰 페이지 끝 */
@@ -121,16 +140,36 @@ body {
 /* 리뷰 페이지_ 영화 이미지 불러오는 곳 */
 
 .review {
-  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
   height: 300px;
 }
 
 /* 리뷰 페이지_ 닉네임 아이디 패스워드 + 댓글 등록 부분 */
 
+.commentContainer {
+  max-width: 1000px;
+  margin: 0 auto;
+}
 .commentNickPwRating {
+  justify-content: space-between;
+  align-items: center;
   display: flex;
+  width: 100%;
 }
 
-/* .commentUp {
-  display: flex;
-} */
+.commentUp textarea {
+  width: 100%;
+  height: 100px;
+  
+
+} 
+ 
+
+.commentList {
+  width: 100%;
+}
+
+.commentLi {
+  width: 100%;
+}
