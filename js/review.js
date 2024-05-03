@@ -10,6 +10,7 @@ const options = {
 //리스트 불러오기
 async function fetchMovies() {
   let movies = [];
+  let credits = [];
 
   for (let page = 1; page <= 3; page++) {
     const response = await fetch(
@@ -19,12 +20,68 @@ async function fetchMovies() {
     const responseJson = await response.json();
     const pageResults = responseJson.results;
 
+    for (const movie of pageResults) {
+      const creditsResponse = await fetch(
+        `https://api.themoviedb.org/3/movie/${movie.id}/credits?api_key=7e82827d6ffa944c4567ae823e15e2df`,
+        options
+      );
+      const creditsData = await creditsResponse.json();
+      movie.credits = creditsData;
+    }
     movies.push(...pageResults);
   }
 
   let urlParams = new URL(location.href).searchParams;
-  const name = urlParams.get("movieId");
-  console.log(name);
+  const movieId = urlParams.get("movieId");
+  const content = document.querySelector(".content");
+
+  movies.forEach((movie) => {
+    const posterImg = movie.poster_path;
+    const title = movie.title;
+    const overView = movie.overview;
+    const average = movie.vote_average.toFixed(1);
+    const id = movie.id;
+    const releaseDate = movie.release_date;
+
+    const director = movie.credits.crew.find(
+      (director) => director.job === "Director"
+    ).name;
+    const actor = movie.credits.cast
+      .slice(0, 4)
+      .map((actor, index) => {
+        if (index === 0) {
+          return actor.name;
+        } else {
+          return `<p>${actor.name}</p>`;
+        }
+      })
+      .join("");
+
+    const movieData = movies.find(() => movie.id === parseInt(movieId));
+    if (movieData) {
+      content.insertAdjacentHTML(
+        "beforeend",
+        `
+        <div class="modalContent2" id="${id}">
+          <img
+            class="movieImg"
+            src="https://image.tmdb.org/t/p/w500/${posterImg}"
+          />
+          <div class="movieInfo">
+            <p class="movieTitle" id="movieName">
+              ${title}
+            </p>
+            <p class="movieOverview">${overView}</p>
+            <p class="movieVoteAverage">Rating: ${average}</p>
+            <p class="movieDirector">Director : ${director}</p>
+            <p class="movieActor">Actor : ${actor}</p>
+            <p class="movieReleaseDate">${releaseDate}</p>
+          </div>
+        </div>
+            `
+      );
+    }
+  });
 }
 
 fetchMovies();
