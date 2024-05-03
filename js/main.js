@@ -12,7 +12,10 @@ async function fetchMovies() {
   let movies = [];
 
   for (let page = 1; page <= 3; page++) {
-    const response = await fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=27`, options);
+    const response = await fetch(
+      `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=27`,
+      options
+    );
     const responseJson = await response.json();
     const pageResults = responseJson.results;
 
@@ -142,7 +145,11 @@ function search() {
   }
 
   for (let i = 0; i < card.length; i++) {
-    if (title[i].textContent.toLowerCase().includes(searchMovie.value.toLowerCase())) {
+    if (
+      title[i].textContent
+        .toLowerCase()
+        .includes(searchMovie.value.toLowerCase())
+    ) {
       card[i].style.display = "flex";
     } else {
       card[i].style.display = "none";
