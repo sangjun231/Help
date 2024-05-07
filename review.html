@@ -1,103 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="./css/postComment.css" rel="stylesheet" type="text/css" />
-  <script>
-    const urlP = new URLSearchParams(window.location.search);
-    const mId = urlP.get('mId');
-  </script>
-  <script defer src="./js/review.js"></script>
-  <title>review page</title>
-  <style>
-    .review {
-      width: 100%;
-      border: 1px solid black;
-    }
-
-    .commentList {
-      border: 1px solid black;
-      border-radius: 20px;
-    }
-
-    .userComment {
-      margin: 5px;
-
-      border: 1px solid black;
-    }
-  </style>
-</head>
-<body>
-  <div>
-    <div class="header" a href="index.html">
-      <a href="./index.html">
-    <h1 class="title">
-      Help the Pro9rammers!
-      <span class="drop"></span>
-      <span class="drop"></span>
-      <span class="drop"></span>
-      <span class="drop"></span>
-    </h1>
-  </a>
-  </div>
-    <div class="content">
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./css/postComment.css" rel="stylesheet" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <script>
+      const urlP = new URLSearchParams(window.location.search);
+      const mId = urlP.get("mId");
+    </script>
+    <script defer src="./js/review.js"></script>
+    <title>review page</title>
+  </head>
+  <body>
+    <div>
+      <div class="header" a href="index.html">
+        <a href="./index.html">
+          <h1 class="title">
+            Help the Pro9rammers!
+            <span class="drop"></span>
+            <span class="drop"></span>
+            <span class="drop"></span>
+            <span class="drop"></span>
+          </h1>
+        </a>
+      </div>
     </div>
     <div class="commentNickPwRating">
       <div class="nickname">
-        <label for="nickname">Nickname:</label>
-        <input type="text" name="nickname" id="nickname" required />
+        <label for="nickname"></label>
+        <input
+          type="text"
+          name="nickname"
+          placeholder="Nickname"
+          id="nickname"
+          autocomplete="off"
+          required
+        />
       </div>
       <div class="pw">
-        <label for="pw">PW:</label>
-        <input type="text" name="pw" id="pw" required />
+        <label for="pw"></label>
+        <input
+          type="text"
+          name="pw"
+          id="pw"
+          placeholder="Password"
+          autocomplete="off"
+          required
+        />
       </div>
       <div class="rating">
         <label for="rating">rating:</label>
-        <input type="number" min="0" max="10" step="1" name="rating" id="rating" required />
+        <input
+          type="number"
+          min="0"
+          max="10"
+          step="1"
+          name="rating"
+          id="rating"
+          required
+        />
       </div>
     </div>
     <div class="commentUp">
       <div class="comment">
         <label for="comment"></label>
-        <input id="comment" type="text" placeholder="댓글을 입력하세요." style="width: 80%; height: 40px; font-size: 18px" />
+        <input
+          id="comment"
+          type="text"
+          placeholder="댓글을 입력하세요."
+          style="width: 80%; height: 40px; font-size: 18px"
+          autocomplete="off"
+        />
       </div>
       <button id="postingBtn" type="button" button class="button">
         <span class="inner"><strong>댓글 등록</strong></span>
       </button>
     </div>
     <div class="commentList">
-      <h3>댓글 목록</h3>
-      <div class="commentLi">
-        <!-- <div class="userComment">
-          <p>최혜미</p>
-          <p>영화 개꿀잼이용</p>
-          <p>별점 : 2 / 10</p>
-        </div>
-      </div>
+      <h3>review list</h3>
+      <div class="commentLi"></div>
     </div>
     <footer>
       <ul>
         <li>
-          <a href="https://github.com/JJQKR/" target="_blank"><i class="fa-brands fa-github"></i> </a>
+          <a href="https://github.com/JJQKR/" target="_blank"
+            ><i class="fa-brands fa-github"></i>
+          </a>
           <p class="member_name">강연주</p>
         </li>
         <li>
-          <a href="https://github.com/LastDice" target="_blank"><i class="fa-brands fa-github"></i> </a>
+          <a href="https://github.com/LastDice" target="_blank"
+            ><i class="fa-brands fa-github"></i>
+          </a>
           <p class="member_name">고종원</p>
         </li>
         <li>
-          <a href="https://github.com/sangjun231" target="_blank"><i class="fa-brands fa-github"></i> </a>
+          <a href="https://github.com/sangjun231" target="_blank"
+            ><i class="fa-brands fa-github"></i>
+          </a>
           <p class="member_name">신상준</p>
         </li>
         <li>
-          <a href="https://github.com/jonghoon7431" target="_blank"><i class="fa-brands fa-github"></i> </a>
+          <a href="https://github.com/jonghoon7431" target="_blank"
+            ><i class="fa-brands fa-github"></i>
+          </a>
           <p class="member_name">이종훈</p>
         </li>
         <li>
-          <a href="https://github.com/MiMing-00" target="_blank"><i class="fa-brands fa-github"></i> </a>
+          <a href="https://github.com/MiMing-00" target="_blank"
+            ><i class="fa-brands fa-github"></i>
+          </a>
           <p class="member_name">최혜미</p>
         </li>
       </ul>

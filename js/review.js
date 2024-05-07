@@ -2,16 +2,24 @@ const options = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NWU4MzRhY2Q0Mjk5MDk0MzI4ZmMxZTUyZjVhYTBmMyIsInN1YiI6IjY2MjZmZDE2MmUyYjJjMDE2MzY3MjA4ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.wl8aFUtCjzsNdhNXgwn4Aw1kdLas3x17gn0YiTIfoNU",
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NWU4MzRhY2Q0Mjk5MDk0MzI4ZmMxZTUyZjVhYTBmMyIsInN1YiI6IjY2MjZmZDE2MmUyYjJjMDE2MzY3MjA4ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.wl8aFUtCjzsNdhNXgwn4Aw1kdLas3x17gn0YiTIfoNU",
   },
 };
+
+//메인 페이지에서 영화 고유 Id값 받아오기
+let urlParams = new URL(location.href).searchParams;
+const movieId = urlParams.get("movieId");
 
 //리스트 불러오기
 async function fetchMovies() {
   let movies = [];
 
   for (let page = 1; page <= 3; page++) {
-    const response = await fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=27`, options);
+    const response = await fetch(
+      `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=27`,
+      options
+    );
     const responseJson = await response.json();
     const pageResults = responseJson.results;
 
@@ -28,17 +36,19 @@ async function fetchMovies() {
   }
   //리뷰페이지 영화 정보 fetch
   const credits = movies.map(async (movie) => {
-    const creditsResponse = await (await fetch(`https://api.themoviedb.org/3/movie/${movie.id}/credits?api_key=7e82827d6ffa944c4567ae823e15e2df`, options)).json();
+    const creditsResponse = await (
+      await fetch(
+        `https://api.themoviedb.org/3/movie/${movie.id}/credits?api_key=7e82827d6ffa944c4567ae823e15e2df`,
+        options
+      )
+    ).json();
 
     return { ...movie, credits: creditsResponse };
   });
   //모든 비동기화를 병렬로 진행하여 속도향상 -> 하나라도 오류시 문제 발생하는게 단점
   movies = await Promise.all(credits);
-  console.log(movies);
   //리뷰페이지 영화 정보 fetch 여기까지
 
-  let urlParams = new URL(location.href).searchParams;
-  const movieId = urlParams.get("movieId");
   const content = document.querySelector(".content");
 
   movies.forEach((movie) => {
@@ -49,7 +59,9 @@ async function fetchMovies() {
     const id = movie.id;
     const releaseDate = movie.release_date;
 
-    const director = movie.credits.crew.find((director) => director.job === "Director").name;
+    const director = movie.credits.crew.find(
+      (director) => director.job === "Director"
+    ).name;
     const actor = movie.credits.cast
       .slice(0, 4)
       .map((actor, index) => {
@@ -127,7 +139,7 @@ function postingComment() {
       comment: comment,
     };
 
-    const key = "comment_" + commentId;
+    const key = `comment_${movieId}_${commentId}`;
     localStorage.setItem(key, JSON.stringify(data));
 
     alert("댓글이 작성되었습니다.");
@@ -139,7 +151,7 @@ function loadComments() {
   const allComments = [];
   for (let i = 0; i < localStorage.length; i++) {
     const key = localStorage.key(i);
-    if (key.startsWith("comment_")) {
+    if (key.startsWith("comment_" + movieId)) {
       //가져오고
       const commentAllDataString = localStorage.getItem(key);
       //파싱 한 번 더 필요하니까
@@ -152,7 +164,7 @@ function loadComments() {
 }
 
 function renderComment() {
-  const renderAllComment = loadComments();
+  const renderAllComment = loadComments(movieId);
 
   const CommentSection = document.querySelector(".commentLi");
   CommentSection.innerHTML = "";
@@ -173,7 +185,7 @@ function renderComment() {
 renderComment();
 
 function DeleteComment(THIS_IS_FAKE_KEY) {
-  const key = "comment_" + THIS_IS_FAKE_KEY;
+  const key = `comment_${movieId}_${THIS_IS_FAKE_KEY}`;
   const commentRaw = localStorage.getItem(key);
 
   const password = prompt("비밀번호를 입력해주세요.");
