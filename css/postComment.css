@@ -75,15 +75,15 @@ body {
   filter: url(#goo);
   position: relative;
   letter-spacing: -0em;
-  color: red;
+  color: var(--wine);
 }
 
 .title:nth-child(1) {
-  color: red;
+  color: var(--wine);
 }
 
 .a {
-  color: red;
+  color: var(--wine);
 }
 
 .drop {
@@ -191,6 +191,7 @@ body {
 
 .movieOverview {
   height: 50vh;
+  margin-right: 5%;
   overflow: auto;
   font-size: 2.6vw;
   border-right: 1px solid white;
@@ -248,7 +249,7 @@ body {
 .review {
   width: 100%;
   margin: 0 auto;
-  border: 1px solid white;
+  /* border: 1px solid white; */
   display: flex;
 }
 
@@ -416,6 +417,7 @@ body {
   justify-content: center;
   width: 90%;
   margin: 0 5%;
+  z-index: 10;
 }
 .commentList h3 {
   font-size: 3vw;
