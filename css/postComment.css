@@ -138,6 +138,7 @@ body {
 }
 
 .movieTitle {
+  font-family: "continuous";
   font-size: 100px;
 }
 
@@ -146,7 +147,12 @@ body {
 }
 
 .movieVoteAverage {
+  font-family: "continuous";
   font-size: 50px;
+}
+
+.actorName {
+  margin-left: 70px;
 }
 
 /* 리뷰 페이지 */
