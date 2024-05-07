@@ -1,7 +1,6 @@
 @font-face {
   font-family: "Daughter_handwriting";
-  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/naverfont_03@1.0/Daughter_handwriting.woff")
-    format("woff");
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/naverfont_03@1.0/Daughter_handwriting.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -360,46 +359,6 @@ body.scroll {
 
 /* 모달 CSS 여기까지 */
 
-.top_button {
-  font-family: "Daughter_handwriting";
-  font-weight: bold;
-  position: fixed;
-  width: 7rem;
-  height: 7rem;
-  right: 4rem;
-  bottom: 4rem;
-  font-size: 5rem;
-  background: white;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-self: center;
-}
-.top_button:active {
-  background-color: var(--wine);
-}
-
-.footer_text {
-  display: flex;
-  justify-content: center;
-  font-size: 3vw;
-  margin-bottom: 1vh;
-  border-bottom: 1px white solid;
-  border-top: 1px white solid;
-}
-.team_list {
-  width: 100%;
-  height: 18vh;
-  display: flex;
-  align-items: start;
-}
-.team_list li {
-  width: 50%;
-  font-size: 4vw;
-  justify-content: space-between;
-  list-style: none;
-}
-
 /* 배경 음악 CSS */
 
 #bgmBtn,
@@ -429,6 +388,8 @@ body.scroll {
 }
 
 #volume-control {
+  width: 10rem;
+  margin-left: 0.4vw;
   border-radius: 8px;
   outline: none;
   accent-color: var(--wine);
@@ -439,7 +400,7 @@ body.scroll {
 /* footer */
 footer {
   display: flex;
-  border-top: 1px solid white;
+  /* border-top: 1px solid white; */
   color: white;
   width: 98vw;
   height: 15vh;
@@ -467,16 +428,36 @@ footer ul {
 footer ul li {
   padding: 2vh 0;
 }
-
+.fa-github {
+  font-size: 4vw;
+  margin-bottom: 5%;
+}
 footer ul li a {
   text-decoration: none;
   color: white;
   font-size: 0.8vw;
 }
-footer ul li:nth-child(1) {
-  border-left: 1px solid black;
-}
+
 .member_name {
   font-size: 1.4vw;
   margin-bottom: 1vh;
+}
+
+/* 탑버튼  */
+.top_button {
+  font-family: "Daughter_handwriting";
+  font-weight: bold;
+  position: fixed;
+  width: 6rem;
+  height: 6rem;
+  right: 2rem;
+  bottom: 4rem;
+  font-size: 4rem;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+}
+.top_button:active {
+  background-color: var(--wine);
 }

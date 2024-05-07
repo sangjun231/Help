@@ -1,7 +1,6 @@
 @font-face {
   font-family: "Daughter_handwriting";
-  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/naverfont_03@1.0/Daughter_handwriting.woff")
-    format("woff");
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/naverfont_03@1.0/Daughter_handwriting.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -19,7 +18,22 @@
   --red: #c00909;
 }
 
+@font-face {
+  font-family: "Daughter_handwriting";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/naverfont_03@1.0/Daughter_handwriting.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "continuous";
+  src: url(./continuous.otf);
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
+  font-family: "Daughter_handwriting";
   padding: 0;
   margin: 0;
 }
@@ -28,10 +42,18 @@
   text-decoration: none;
 }
 
+.header a:hover {
+  cursor: url(../img/skeleton-cursor.png) 20 30, auto;
+  caret-color: white;
+}
+
 body {
+  background: linear-gradient(0deg, var(--wine) 0%, rgba(0, 0, 0, 1) 11%);
+  color: white;
   width: 100%;
   height: auto;
-  /* background-color: black; */
+  user-select: none;
+  cursor: url(../img/skeleton-cursor.png) 20 30, auto;
 }
 
 .header {
@@ -112,64 +134,173 @@ body {
     transform: translateY(60vh) scaleX(0.85) rotate(45deg);
   }
 }
-/* 헤더 부분 끝 */
 
+/* 헤더 부분 끝 */
+.movie_container {
+  display: flex;
+  justify-content: center;
+  width: 70%;
+}
 .modalContent2 {
   font-family: "Daughter_handwriting";
-  font-size: 35px;
+  background-color: white;
   color: black;
   display: flex;
+  justify-content: center;
   flex-direction: row;
-  align-items: flex-start;
-  background-color: #fefefe;
-  margin: 2% auto;
-  border: 1px solid #888;
-  width: 80%;
-  max-width: 1180px;
-  max-height: 805px;
+  background-color: black;
+  color: white;
+  margin: auto;
+  height: 80vh;
+  width: 100%;
   position: relative;
 }
 
 .movieInfo {
+  height: auto;
+  text-align: center;
   display: flex;
   flex-direction: column;
-  margin-left: 20px;
   flex: 1;
+  text-align: center;
+}
+.info2 {
+  display: flex;
+}
+
+.movieInfo:nth-last-child(1) {
+  font-size: 2vw;
+}
+
+.movieImg {
+  margin-right: 2%;
 }
 
 .movieTitle {
-  font-family: "continuous";
-  font-size: 100px;
+  white-space: nowrap;
+  color: var(--wine);
+  text-align: center;
+  font-size: 5vw;
+  height: 10%;
+  padding-left: 10%;
+  margin-bottom: 5%;
+  padding-bottom: 4%;
 }
 
 .movieOverview {
-  font-size: 35px;
+  height: 50vh;
+  overflow: auto;
+  font-size: 2.6vw;
+  border-right: 1px solid white;
+}
+.movieOverview::-webkit-scrollbar {
+  background-color: black;
+  width: 0.2vw;
+}
+.movieOverview::-webkit-scrollbar-thumb {
+  background-color: white;
+  border-radius: 10px;
 }
 
+.right {
+  height: 46vh;
+  display: flex;
+  flex-direction: column;
+  margin-left: 2%;
+  padding: 0 10%;
+}
+.movieDirector {
+  font-size: 1.8vw;
+  margin-bottom: 1%;
+}
+.movieDirector span {
+  color: var(--wine);
+  font-size: 3vw;
+}
+.movieActor {
+  font-size: 1.6vw;
+  margin-top: 1%;
+}
+.movieActor span {
+  color: var(--wine);
+  font-size: 3vw;
+}
+
+.other_info {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5%;
+}
+.movieReleaseDate {
+  font-size: 2vw;
+}
 .movieVoteAverage {
-  font-family: "continuous";
-  font-size: 50px;
-}
-
-.actorName {
-  margin-left: 70px;
+  font-size: 2vw;
 }
 
 /* 리뷰 페이지 */
-.review {
-  width: 100%;
-  border: 1px solid black;
+.main {
+  margin: 5%;
 }
 
-.commentList {
-  border: 1px solid black;
-  border-radius: 20px;
+.review {
+  width: 100%;
+  margin: 0 auto;
+  border: 1px solid white;
+  display: flex;
+}
+
+.posterSection {
+  border: yellow solid 3px;
+  background-color: #a01313;
+  width: 35%;
+  height: 150px;
+  margin: 20px;
+  padding: 20px;
+}
+
+.infoSection {
+  border: yellow solid 3px;
+  background-color: #a01313;
+  width: 60%;
+  height: 150px;
+  margin: 20px;
+  padding: 20px;
+}
+
+#postingBtn {
+  font-size: 1vw;
+  background: none;
+  color: white;
+  border: 1px solid white;
+  cursor: url(../img/skeleton-cursor.png) 20 30, auto;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+#postingBtn:hover {
+  font-size: 1vw;
+  background: none;
+  color: white;
+  border: 1px solid white;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+
+  caret-color: white;
+}
+#postingBtn:active {
+  background-color: var(--wine);
 }
 
 .userComment {
-  margin: 5px;
-
-  border: 1px solid black;
+  position: relative;
+  font-size: 2vw;
+  margin: 2% 0;
+  border: 1px solid white;
+}
+.userComment p {
+  font-size: 1.8vw;
 }
 
 /* 리뷰 페이지 끝 */
@@ -177,16 +308,199 @@ body {
 /* 리뷰 페이지_ 영화 이미지 불러오는 곳 */
 
 .review {
-  width: 100%;
+  margin: 0 auto;
   height: 300px;
 }
 
 /* 리뷰 페이지_ 닉네임 아이디 패스워드 + 댓글 등록 부분 */
 
-.commentNickPwRating {
-  display: flex;
+.commentContainer {
+  max-width: 90%;
+  margin: 5% auto;
 }
 
-/* .commentUp {
+.commentNickPwRating {
+  font-size: 2vw;
+  margin-top: 8%;
+  justify-content: center;
+  align-items: center;
   display: flex;
-} */
+  width: 100%;
+}
+
+.commentNickPwRating :nth-child(-n + 3) {
+  margin: 5% 5% 5% 0;
+}
+.nickname input {
+  width: 20vw;
+  height: 2vw;
+  border: none;
+  border-bottom: 1px solid white;
+  background-color: black;
+  color: white;
+  font-size: 1.8vw;
+}
+.nickname input::placeholder {
+  font-size: 1.8vw;
+}
+.pw input {
+  width: 20vw;
+  height: 2vw;
+  border: none;
+  border-bottom: 1px solid white;
+  background-color: black;
+  color: white;
+  font-size: 1.8vw;
+}
+.pw input::placeholder {
+  font-size: 1.8vw;
+}
+.rating {
+  display: flex;
+  color: gray;
+}
+.rating input {
+  width: 16vw;
+  text-align: center;
+  height: 2vw;
+  border: none;
+  border-bottom: 1px solid white;
+  color: white;
+  background-color: black;
+  font-size: 1.8vw;
+}
+
+.rating input::-webkit-outer-spin-button,
+.rating input::-webkit-inner-spin-button {
+  color: white;
+  width: 100px;
+}
+
+.commentNickPwRating p {
+  font-size: 2vw;
+}
+
+.commentUp input {
+  margin: 0 8%;
+  width: 90%;
+}
+.commentUp input::placeholder {
+  font-size: 1.2vw;
+}
+
+.commentUp #postingBtn {
+  font-family: "Daughter_handwriting";
+  display: flex;
+  margin: 2% auto 4%;
+  width: 16%;
+  height: 6vh;
+  border-radius: 20px;
+  font-size: 1.5vw;
+}
+
+.commentUp #postingBtn .inner {
+  align-items: center;
+}
+
+.delArea {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5%;
+}
+
+.commentList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 90%;
+  margin: 0 5%;
+}
+.commentList h3 {
+  font-size: 3vw;
+  font-family: "Daughter_handwriting";
+  color: var(--wine);
+}
+.delBtn {
+  font-size: 2vw;
+  position: absolute;
+  right: 0;
+  margin-right: 2%;
+  bottom: 30%;
+  width: 8vw;
+  cursor: pointer;
+  border: none;
+  border: 1px solid white;
+  border-radius: 10px;
+  color: white;
+  background-color: transparent;
+}
+.delBtn:active {
+  background-color: var(--wine);
+}
+
+/* 탑 버튼 */
+
+.top_button {
+  font-family: "Daughter_handwriting";
+  font-weight: bold;
+  position: fixed;
+  width: 6rem;
+  height: 6rem;
+  right: 2rem;
+  bottom: 4rem;
+  font-size: 4rem;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+}
+.top_button:active {
+  background-color: var(--wine);
+}
+
+/* 푸터 */
+
+/* footer */
+footer {
+  display: flex;
+  color: white;
+  width: 98vw;
+  height: 15vh;
+  margin-top: 14vh;
+}
+footer ul {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: flex-end;
+  list-style: none;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 1200px) {
+  footer {
+    height: 20vh;
+  }
+  footer ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+footer ul li {
+  padding-top: 2%;
+}
+.fa-github {
+  font-size: 4vw;
+  margin-bottom: 5%;
+}
+footer ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 0.8vw;
+}
+
+.member_name {
+  font-size: 1.4vw;
+  margin-bottom: 1vh;
+}

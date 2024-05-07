@@ -2,8 +2,7 @@ const options = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NWU4MzRhY2Q0Mjk5MDk0MzI4ZmMxZTUyZjVhYTBmMyIsInN1YiI6IjY2MjZmZDE2MmUyYjJjMDE2MzY3MjA4ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.wl8aFUtCjzsNdhNXgwn4Aw1kdLas3x17gn0YiTIfoNU",
+    Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NWU4MzRhY2Q0Mjk5MDk0MzI4ZmMxZTUyZjVhYTBmMyIsInN1YiI6IjY2MjZmZDE2MmUyYjJjMDE2MzY3MjA4ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.wl8aFUtCjzsNdhNXgwn4Aw1kdLas3x17gn0YiTIfoNU",
   },
 };
 
@@ -16,10 +15,7 @@ async function fetchMovies() {
   let movies = [];
 
   for (let page = 1; page <= 3; page++) {
-    const response = await fetch(
-      `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=27`,
-      options
-    );
+    const response = await fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=27`, options);
     const responseJson = await response.json();
     const pageResults = responseJson.results;
 
@@ -36,12 +32,7 @@ async function fetchMovies() {
   }
   //리뷰페이지 영화 정보 fetch
   const credits = movies.map(async (movie) => {
-    const creditsResponse = await (
-      await fetch(
-        `https://api.themoviedb.org/3/movie/${movie.id}/credits?api_key=7e82827d6ffa944c4567ae823e15e2df`,
-        options
-      )
-    ).json();
+    const creditsResponse = await (await fetch(`https://api.themoviedb.org/3/movie/${movie.id}/credits?api_key=7e82827d6ffa944c4567ae823e15e2df`, options)).json();
 
     return { ...movie, credits: creditsResponse };
   });
@@ -60,9 +51,7 @@ async function fetchMovies() {
     const id = movie.id;
     const releaseDate = movie.release_date;
 
-    const director = movie.credits.crew.find(
-      (director) => director.job === "Director"
-    ).name;
+    const director = movie.credits.crew.find((director) => director.job === "Director").name;
     const actor = movie.credits.cast
       .slice(0, 4)
       .map((actor, index) => {
@@ -80,19 +69,29 @@ async function fetchMovies() {
         "beforeend",
         `
         <div class="modalContent2" id="${id}">
+        <div class="movie_container">
           <img
             class="movieImg"
-            src="https://image.tmdb.org/t/p/w500/${posterImg}"
+            src="https://image.tmdb.org/t/p/w300/${posterImg}"
           />
           <div class="movieInfo">
             <p class="movieTitle" id="movieName">
               ${title}
             </p>
+            <div class="info2">
+            <div class="left">
             <p class="movieOverview">${overView}</p>
+            </div>
+            <div class="right">
+            <p class="movieDirector"><span>Director</span><br> ${director}</p>
+            <p class="movieActor"><span>Actor</span><br> ${actor}</p>
+            </div>
+            </div>
+            <div class="other_info">
             <p class="movieVoteAverage">Rating: ${average}</p>
-            <p class="movieDirector">Director : ${director}</p>
-            <p class="movieActor">Actor : ${actor}</p>
-            <p class="movieReleaseDate">${releaseDate}</p>
+            <p class="movieReleaseDate">releaseDate : ${releaseDate}</p>
+            </div>
+          </div>
           </div>
         </div>
             `
@@ -163,7 +162,7 @@ function renderComment() {
   renderAllComment.forEach((render) => {
     CommentSection.innerHTML += `
             <div class="userComment">
-              <p>${render.nickname}</p>
+              <p>닉네임: ${render.nickname}</p>
               <p>${render.comment}</p>
               <p>별점 : ${render.rating} / 10</p>
             <button type="button" class="delBtn" onclick="DeleteComment(${render.id})">삭제</button>
@@ -195,3 +194,19 @@ function DeleteComment(THIS_IS_FAKE_KEY) {
     alert("비밀번호가 틀렸습니다.");
   }
 }
+
+//탑버튼
+const topButton = document.querySelector(".top_button");
+
+topButton.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+window.addEventListener("scroll", (event) => {
+  // event.preventDefault;
+  if (scrollY > 50) {
+    topButton.style.opacity = "100";
+  } else {
+    topButton.style.opacity = "0";
+  }
+});
