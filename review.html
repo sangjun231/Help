@@ -11,65 +11,58 @@
   </script>
   <script defer src="./js/review.js"></script>
   <title>review page</title>
-  </head>
+</head>
+
 <body>
-  
-    <div class="header" a href="index.html">
-      <a href="./index.html">
-    <h1 class="title">
-      Help the Pro9rammers!
-      Help the Pro9rammers!
-      <span class="drop"></span>
-      <span class="drop"></span>
-      <span class="drop"></span>
-      <span class="drop"></span>
-    </h1>
-  </a>
+
+  <div class="header" a href="index.html">
+    <a href="./index.html">
+      <h1 class="title">
+        Help the Pro9rammers!
+        <span class="drop"></span>
+        <span class="drop"></span>
+        <span class="drop"></span>
+        <span class="drop"></span>
+      </h1>
+    </a>
   </div>
   <div class="main">
-    <div class="review">
-      <div class="posterSection">
-      <p>영화 이미지 불러오는 공간</p>
-    </div>
-    <div class="infoSection">
-      <p>영화 정보 불러오는 공간</p>
-    </div>
-    </div>
+    <div class="content"> </div>
 
     <div class="commentContainer">
-    <form class="commentForm">
-    <div class="commentNickPwRating">
-      <div class="nickname">
-        <label for="nickname">닉네임: </label>
-        <input type="text" name="nickname" id="nickname" required />
-      </div>
-      <div class="pw">
-        <label for="pw">비밀번호: </label>
-        <input type="text" name="pw" id="pw" required />
-      </div>
-      <div class="rating">
-        <label for="rating">평점: </label>
-        <input type="number" min="0" max="10" step="1" name="rating" id="rating" required />
-      </div>
-    </div>
-    <div class="commentUp">
-      <div class="comment">
-        <label for="comment"></label>
-        <textarea id="comment" placeholder="댓글을 입력하세요."></textarea>
-      </div>
-      <button id="postingBtn" type="submit" class="button">
-        <span class="inner"><strong>댓글 등록</strong></span>
-      </button>
-    </div>
-  </form>
-    <div class="commentList">
-      <div class="commentLi">
+      <form class="commentForm">
+        <div class="commentNickPwRating">
+          <div class="nickname">
+            <label for="nickname">닉네임: </label>
+            <input type="text" name="nickname" id="nickname" required />
+          </div>
+          <div class="pw">
+            <label for="pw">비밀번호: </label>
+            <input type="text" name="pw" id="pw" required />
+          </div>
+          <div class="rating">
+            <label for="rating">평점: </label>
+            <input type="number" min="0" max="10" step="1" name="rating" id="rating" required />
+          </div>
+        </div>
+        <div class="commentUp">
+          <div class="comment">
+            <label for="comment"></label>
+            <textarea id="comment" placeholder="댓글을 입력하세요."></textarea>
+          </div>
+          <button id="postingBtn" type="submit" class="button">
+            <span class="inner"><strong>댓글 등록</strong></span>
+          </button>
+        </div>
+      </form>
+      <div class="commentList">
+        <div class="commentLi">
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<button class="top_button">top</button>
+  <button class="top_button">top</button>
 
 
 </body>
