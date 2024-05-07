@@ -151,3 +151,19 @@ function m(mId) {
 }
 
 m(mId);
+
+//탑버튼
+const topButton = document.querySelector(".top_button");
+
+topButton.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+window.addEventListener("scroll", (event) => {
+  // event.preventDefault;
+  if (scrollY > 50) {
+    topButton.style.opacity = "100";
+  } else {
+    topButton.style.opacity = "0";
+  }
+});

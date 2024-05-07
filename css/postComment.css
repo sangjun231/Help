@@ -5,6 +5,20 @@
   --deepDark: #7e6569;
 }
 
+@font-face {
+  font-family: "Daughter_handwriting";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/naverfont_03@1.0/Daughter_handwriting.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "continuous";
+  src: url(./continuous.otf);
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -14,8 +28,13 @@
   text-decoration: none;
 }
 
+.header a:hover {
+  cursor: url(../img/skeleton-cursor.png) 20 30, auto;
+  caret-color: white;
+}
+
 body {
-  background-color: black;
+  background: linear-gradient(0deg, var(--wine) 0%, rgba(0, 0, 0, 1) 11%);
   color: white;
   width: 100%;
   height: auto;
@@ -133,9 +152,33 @@ body {
 }
 
 #postingBtn {
+  font-size: 1vw;
+
+  background: none;
+  color: white;
+  border: 1px solid white;
+  /* border-radius: 10px; */
+
   align-items: center;
   justify-content: center;
   display: flex;
+}
+
+#postingBtn:hover {
+  font-size: 1vw;
+
+  background: none;
+  color: white;
+  border: 1px solid white;
+  /* border-radius: 10px; */
+
+  align-items: center;
+  justify-content: center;
+  display: flex;
+
+  cursor: url(../img/skeleton-cursor.png) 20 30, auto;
+  caret-color: white;
+
 }
 
 .commentList {
@@ -203,4 +246,23 @@ body {
 
 .commentLi {
   width: 100%;
+}
+
+/* 탑 버튼 */
+
+.top_button {
+  font-family: "Daughter_handwriting";
+  font-weight: bold;
+  position: fixed;
+  bottom: 4vh;
+  width: 9vw;
+  height: 15vh;
+  right: 4vw;
+  font-size: 6vw;
+  background: white;
+  border-radius: 50%;
+  padding-bottom: 16vh;
+}
+.top_button:active {
+  background-color: var(--wine);
 }
