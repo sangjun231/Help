@@ -307,10 +307,6 @@ body::-webkit-scrollbar-thumb {
 }
 
 .movieVoteAverage {
-  /* margin-top: 2%; */
-  /* position: absolute;
-  bottom: 2%;
-  left: 2%; */
   font-size: 2vw;
 }
 
@@ -327,6 +323,7 @@ body::-webkit-scrollbar-thumb {
   color: white;
   cursor: pointer;
   padding: auto;
+  color: var(--red);
 }
 
 .modalContent {
@@ -355,7 +352,7 @@ body::-webkit-scrollbar-thumb {
   color: white;
   position: fixed;
   top: 10;
-  right: 19%;
+  right: 16%;
   font-size: 2vw;
   font-weight: bold;
   z-index: 5;
