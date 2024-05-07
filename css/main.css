@@ -430,7 +430,7 @@ footer ul li {
 }
 .fa-github {
   font-size: 4vw;
-  margin-bottom: 5%;
+  /* margin-bottom: 5%; */
 }
 footer ul li a {
   text-decoration: none;
