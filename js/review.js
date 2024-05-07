@@ -7,6 +7,10 @@ const options = {
   },
 };
 
+//메인 페이지에서 영화 고유 Id값 받아오기
+let urlParams = new URL(location.href).searchParams;
+const movieId = urlParams.get("movieId");
+
 //리스트 불러오기
 async function fetchMovies() {
   let movies = [];
@@ -46,8 +50,6 @@ async function fetchMovies() {
   console.log(movies);
   //리뷰페이지 영화 정보 fetch 여기까지
 
-  let urlParams = new URL(location.href).searchParams;
-  const movieId = urlParams.get("movieId");
   const content = document.querySelector(".content");
 
   movies.forEach((movie) => {
@@ -128,7 +130,7 @@ function postingComment() {
       comment: comment,
     };
 
-    const key = "comment_" + commentId;
+    const key = `comment_${movieId}_${commentId}`;
     localStorage.setItem(key, JSON.stringify(data));
 
     alert("댓글이 작성되었습니다.");
@@ -140,7 +142,7 @@ function loadComments() {
   const allComments = [];
   for (let i = 0; i < localStorage.length; i++) {
     const key = localStorage.key(i);
-    if (key.startsWith("comment_")) {
+    if (key.startsWith("comment_" + movieId)) {
       //가져오고
       const commentAllDataString = localStorage.getItem(key);
       //파싱 한 번 더 필요하니까
@@ -153,7 +155,7 @@ function loadComments() {
 }
 
 function renderComment() {
-  const renderAllComment = loadComments();
+  const renderAllComment = loadComments(movieId);
 
   const CommentSection = document.querySelector(".commentLi");
   CommentSection.innerHTML = "";
@@ -171,7 +173,7 @@ function renderComment() {
 renderComment();
 
 function DeleteComment(THIS_IS_FAKE_KEY) {
-  const key = "comment_" + THIS_IS_FAKE_KEY;
+  const key = `comment_${movieId}_${THIS_IS_FAKE_KEY}`;
   const commentRaw = localStorage.getItem(key);
 
   const password = prompt("비밀번호를 입력해주세요.");
