@@ -119,7 +119,9 @@ async function setCard(movies) {
               ${movieData.title}
             </p>
             <p class="movieOverview">${movieData.overview}</p>
-            <p class="movieVoteAverage">Rating: ${movieData.vote_average}</p>
+            <p class="movieVoteAverage">Rating: ${movieData.vote_average.toFixed(
+              1
+            )}</p>
           </div>
         </div>`);
     }
