@@ -51,6 +51,27 @@ async function setCard(movies) {
     );
   });
 
+  // 배경음악 관련
+  const audioContainer = document.querySelector("#bgm");
+
+  document.querySelector("#bgmBtn").addEventListener("click", () => {
+    audioContainer.loop = true;
+    audioContainer.volume = 0.1;
+    audioContainer.play();
+  });
+
+  document.querySelector("#muteBtn").addEventListener("click", () => {
+    audioContainer.pause();
+  });
+
+  document
+    .querySelector("#volume-control")
+    .addEventListener("change", (event) => {
+      audioContainer.volume = event.target.value / 10;
+    });
+
+  // 배경 음악 관련 끝
+
   //모달 창 관련
   function openModal(text) {
     const modal = document.getElementById("modal");
@@ -100,7 +121,9 @@ async function setCard(movies) {
               ${movieData.title}
             </p>
             <p class="movieOverview">${movieData.overview}</p>
-            <p class="movieVoteAverage">Rating: ${movieData.vote_average}</p>
+            <p class="movieVoteAverage">Rating: ${movieData.vote_average.toFixed(
+              1
+            )}</p>
           </div>
         </div>`);
     }

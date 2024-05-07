@@ -1,8 +1,22 @@
+@font-face {
+  font-family: "Daughter_handwriting";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/naverfont_03@1.0/Daughter_handwriting.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "continuous";
+  src: url(./continuous.otf);
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* 헤더 부분 */
 :root {
   --wine: #a01313;
   --red: #c00909;
-  --deepDark: #7e6569;
 }
 
 @font-face {
@@ -50,12 +64,13 @@ body {
 }
 
 .title {
+  font-family: "continuous";
   font-weight: 900;
   font-size: 8vw;
-  margin: 0;
+  margin: 50px;
   filter: url(#goo);
   position: relative;
-  letter-spacing: -0.2em;
+  letter-spacing: -0em;
   color: red;
 }
 
@@ -119,6 +134,41 @@ body {
 }
 
 /* 헤더 부분 끝 */
+
+.modalContent2 {
+  font-family: "Daughter_handwriting";
+  font-size: 35px;
+  color: black;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  background-color: #fefefe;
+  margin: 2% auto;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 1180px;
+  max-height: 805px;
+  position: relative;
+}
+
+.movieInfo {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  flex: 1;
+}
+
+.movieTitle {
+  font-size: 100px;
+}
+
+.movieOverview {
+  font-size: 35px;
+}
+
+.movieVoteAverage {
+  font-size: 50px;
+}
 
 /* 리뷰 페이지 */
 
