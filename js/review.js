@@ -2,7 +2,8 @@ const options = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NWU4MzRhY2Q0Mjk5MDk0MzI4ZmMxZTUyZjVhYTBmMyIsInN1YiI6IjY2MjZmZDE2MmUyYjJjMDE2MzY3MjA4ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.wl8aFUtCjzsNdhNXgwn4Aw1kdLas3x17gn0YiTIfoNU",
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NWU4MzRhY2Q0Mjk5MDk0MzI4ZmMxZTUyZjVhYTBmMyIsInN1YiI6IjY2MjZmZDE2MmUyYjJjMDE2MzY3MjA4ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.wl8aFUtCjzsNdhNXgwn4Aw1kdLas3x17gn0YiTIfoNU",
   },
 };
 
@@ -15,7 +16,10 @@ async function fetchMovies() {
   let movies = [];
 
   for (let page = 1; page <= 3; page++) {
-    const response = await fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=27`, options);
+    const response = await fetch(
+      `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=27`,
+      options
+    );
     const responseJson = await response.json();
     const pageResults = responseJson.results;
 
@@ -32,13 +36,17 @@ async function fetchMovies() {
   }
   //리뷰페이지 영화 정보 fetch
   const credits = movies.map(async (movie) => {
-    const creditsResponse = await (await fetch(`https://api.themoviedb.org/3/movie/${movie.id}/credits?api_key=7e82827d6ffa944c4567ae823e15e2df`, options)).json();
+    const creditsResponse = await (
+      await fetch(
+        `https://api.themoviedb.org/3/movie/${movie.id}/credits?api_key=7e82827d6ffa944c4567ae823e15e2df`,
+        options
+      )
+    ).json();
 
     return { ...movie, credits: creditsResponse };
   });
   //모든 비동기화를 병렬로 진행하여 속도향상 -> 하나라도 오류시 문제 발생하는게 단점
   movies = await Promise.all(credits);
-  console.log(movies);
   //리뷰페이지 영화 정보 fetch 여기까지
 
   const content = document.querySelector(".content");
@@ -51,7 +59,9 @@ async function fetchMovies() {
     const id = movie.id;
     const releaseDate = movie.release_date;
 
-    const director = movie.credits.crew.find((director) => director.job === "Director").name;
+    const director = movie.credits.crew.find(
+      (director) => director.job === "Director"
+    ).name;
     const actor = movie.credits.cast
       .slice(0, 4)
       .map((actor, index) => {
