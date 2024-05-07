@@ -1,7 +1,6 @@
 @font-face {
   font-family: "Daughter_handwriting";
-  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/naverfont_03@1.0/Daughter_handwriting.woff")
-    format("woff");
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/naverfont_03@1.0/Daughter_handwriting.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -21,11 +20,11 @@
 
 @font-face {
   font-family: "Daughter_handwriting";
-  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/naverfont_03@1.0/Daughter_handwriting.woff")
-    format("woff");
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/naverfont_03@1.0/Daughter_handwriting.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
+
 @font-face {
   font-family: "continuous";
   src: url(./continuous.otf);
@@ -137,7 +136,7 @@ body {
 
 .modalContent2 {
   font-family: "Daughter_handwriting";
-  font-size: 35px;
+  font-size: 30px;
   color: black;
   display: flex;
   flex-direction: row;
@@ -163,11 +162,30 @@ body {
 }
 
 .movieOverview {
+  margin: 30px 0 20px 0;
+  width: 100%;
+  height: 300px;
+  overflow: auto;
   font-size: 35px;
 }
 
 .movieVoteAverage {
-  font-size: 50px;
+  font-size: 30px;
+}
+
+.movieDirector {
+  margin-top: 10px;
+}
+
+.movieActor {
+  margin-top: 10px;
+}
+
+.movieReleaseDate {
+  display: flex;
+  justify-content: end;
+  margin-right: 15px;
+
 }
 
 /* 리뷰 페이지 */
@@ -277,9 +295,27 @@ body {
 }
 
 .commentUp #postingBtn {
-  width: 100%;
+  display: flex;
+  margin: 0 auto;
+  width: 10%;
   height: 40px;
+  border-radius: 20px ;
 }
+
+/* .search_button {
+  font-size: 1vw;
+  padding: 0.8% 2%;
+  background: none;
+  color: white;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+
+.search_button:active {
+  font-size: 1.1vw;
+}
+ */
+
 
 .commentUp #postingBtn .inner {
   align-items: center;
@@ -313,6 +349,58 @@ body {
   border-radius: 50%;
   padding-bottom: 16vh;
 }
+
 .top_button:active {
   background-color: var(--wine);
+}
+
+/* 푸터 */
+
+/* footer */
+footer {
+  display: flex;
+  border-top: 1px solid white;
+  color: white;
+  width: 98vw;
+  height: 15vh;
+  margin-top: 14vh;
+}
+
+footer ul {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: flex-end;
+  list-style: none;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 1200px) {
+  footer {
+    height: 20vh;
+  }
+
+  footer ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+footer ul li {
+  padding: 2vh 0;
+}
+
+footer ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 0.8vw;
+}
+
+footer ul li:nth-child(1) {
+  border-left: 1px solid black;
+}
+
+.member_name {
+  font-size: 1.4vw;
+  margin-bottom: 1vh;
 }

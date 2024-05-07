@@ -1,10 +1,10 @@
 @font-face {
   font-family: "Daughter_handwriting";
-  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/naverfont_03@1.0/Daughter_handwriting.woff")
-    format("woff");
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/naverfont_03@1.0/Daughter_handwriting.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
+
 @font-face {
   font-family: "continuous";
   src: url(./continuous.otf);
@@ -28,9 +28,11 @@ body {
   user-select: none;
   background: linear-gradient(0deg, var(--wine) 0%, rgba(0, 0, 0, 1) 6%);
 }
+
 body::-webkit-scrollbar {
   background-color: black;
 }
+
 body::-webkit-scrollbar-thumb {
   background-color: white;
 }
@@ -131,6 +133,7 @@ body::-webkit-scrollbar-thumb {
   justify-content: center;
   padding-bottom: 4%;
 }
+
 .search_input::placeholder {
   font-size: 1.2rem;
 }
@@ -154,6 +157,7 @@ body::-webkit-scrollbar-thumb {
   border: 1px solid white;
   border-radius: 10px;
 }
+
 .search_button:active {
   font-size: 1.1vw;
 }
@@ -174,6 +178,7 @@ body::-webkit-scrollbar-thumb {
   transform-style: preserve-3d;
   perspective: 1000;
 }
+
 .card:hover {
   cursor: url(../img/skeleton-cursor.png) 20 30, auto;
   caret-color: white;
@@ -205,6 +210,7 @@ body::-webkit-scrollbar-thumb {
   z-index: 1;
   opacity: 0;
 }
+
 .card:hover .back_part {
   z-index: 2;
   opacity: 0.7;
@@ -235,6 +241,7 @@ body::-webkit-scrollbar-thumb {
   align-items: center;
   font-size: 1.8vw;
 }
+
 .average .water {
   color: var(--red);
 }
@@ -258,6 +265,7 @@ body::-webkit-scrollbar-thumb {
   width: 24.8vw;
   border-radius: 1rem 0 0 1rem;
 }
+
 @media (min-width: 1980px) {
   .movieImg {
     width: 67.5vw;
@@ -284,11 +292,13 @@ body::-webkit-scrollbar-thumb {
   margin: 10% 0 5%;
   padding: 2%;
   overflow: auto;
-}
+ }
+
 .movieOverview::-webkit-scrollbar {
   background-color: black;
   width: 0.8vw;
 }
+
 .movieOverview::-webkit-scrollbar-thumb {
   background-color: white;
   border-radius: 10px;
@@ -374,29 +384,9 @@ body.scroll {
   justify-content: center;
   align-self: center;
 }
+
 .top_button:active {
   background-color: var(--wine);
-}
-
-.footer_text {
-  display: flex;
-  justify-content: center;
-  font-size: 3vw;
-  margin-bottom: 1vh;
-  border-bottom: 1px white solid;
-  border-top: 1px white solid;
-}
-.team_list {
-  width: 100%;
-  height: 18vh;
-  display: flex;
-  align-items: start;
-}
-.team_list li {
-  width: 50%;
-  font-size: 4vw;
-  justify-content: space-between;
-  list-style: none;
 }
 
 /* 배경 음악 CSS */
@@ -444,6 +434,7 @@ footer {
   height: 15vh;
   margin-top: 14vh;
 }
+
 footer ul {
   width: 100%;
   display: grid;
@@ -458,6 +449,7 @@ footer ul {
   footer {
     height: 20vh;
   }
+
   footer ul {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -472,9 +464,11 @@ footer ul li a {
   color: white;
   font-size: 0.8vw;
 }
+
 footer ul li:nth-child(1) {
   border-left: 1px solid black;
 }
+
 .member_name {
   font-size: 1.4vw;
   margin-bottom: 1vh;
