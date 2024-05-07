@@ -51,22 +51,21 @@ async function setCard(movies) {
   });
 
   // 배경음악 관련
+  const audioContainer = document.querySelector("#bgm");
+
   document.querySelector("#bgmBtn").addEventListener("click", () => {
-    const audioContainer = document.querySelector("#bgm");
     audioContainer.loop = true;
     audioContainer.volume = 0.1;
     audioContainer.play();
   });
 
   document.querySelector("#muteBtn").addEventListener("click", () => {
-    const audioContainer = document.querySelector("#bgm");
     audioContainer.pause();
   });
 
   document
     .querySelector("#volume-control")
     .addEventListener("change", (event) => {
-      const audioContainer = document.querySelector("#bgm");
       audioContainer.volume = event.target.value / 10;
     });
 

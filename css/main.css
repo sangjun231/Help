@@ -245,7 +245,7 @@ body {
   width: 24.8vw;
   border-radius: 1rem 0 0 1rem;
 }
-@media (min-width: 1980px) {
+@media (min-width: 500px) {
   .movieImg {
     width: 67.5vw;
     border-radius: 2rem 0 0 2rem;
@@ -374,3 +374,39 @@ body.scroll {
   justify-content: space-between;
   list-style: none;
 }
+
+/* 배경 음악 CSS */
+
+#bgmBtn,
+#muteBtn {
+  margin: auto 0.2vw 0.5vw 1vw;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  background-color: transparent;
+  border: 1px white solid;
+  border-radius: 3px;
+  padding: 2px;
+  font-weight: 900;
+}
+
+#bgmBtn:hover,
+#muteBtn:hover {
+  color: var(--wine);
+  text-decoration: line-through;
+  font-weight: 900;
+  font-style: italic;
+  border: 1px var(--wine) solid;
+  border-radius: 3px;
+}
+
+#volume-control {
+  border-radius: 8px;
+  outline: none;
+  accent-color: var(--wine);
+}
+
+/* 배경 음악 CSS 끝 */
