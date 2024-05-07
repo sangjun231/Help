@@ -2,8 +2,7 @@ const options = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NWU4MzRhY2Q0Mjk5MDk0MzI4ZmMxZTUyZjVhYTBmMyIsInN1YiI6IjY2MjZmZDE2MmUyYjJjMDE2MzY3MjA4ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.wl8aFUtCjzsNdhNXgwn4Aw1kdLas3x17gn0YiTIfoNU",
+    Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NWU4MzRhY2Q0Mjk5MDk0MzI4ZmMxZTUyZjVhYTBmMyIsInN1YiI6IjY2MjZmZDE2MmUyYjJjMDE2MzY3MjA4ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.wl8aFUtCjzsNdhNXgwn4Aw1kdLas3x17gn0YiTIfoNU",
   },
 };
 
@@ -12,10 +11,7 @@ async function fetchMovies() {
   let movies = [];
 
   for (let page = 1; page <= 3; page++) {
-    const response = await fetch(
-      `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=27`,
-      options
-    );
+    const response = await fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=27`, options);
     const responseJson = await response.json();
     const pageResults = responseJson.results;
 
@@ -63,12 +59,10 @@ async function setCard(movies) {
     audioContainer.pause();
   });
 
-  document
-    .querySelector("#volume-control")
-    .addEventListener("change", (event) => {
-      const audioContainer = document.querySelector("#bgm");
-      audioContainer.volume = event.target.value / 10;
-    });
+  document.querySelector("#volume-control").addEventListener("change", (event) => {
+    const audioContainer = document.querySelector("#bgm");
+    audioContainer.volume = event.target.value / 10;
+  });
 
   // 배경 음악 관련 끝
 
@@ -120,7 +114,7 @@ async function setCard(movies) {
               ${movieData.title}
             </p>
             <p class="movieOverview">${movieData.overview}</p>
-            <p class="movieVoteAverage">Rating: ${movieData.vote_average}</p>
+            <p class="movieVoteAverage">Rating: ${movieData.vote_average.toFixed(1)}</p>
           </div>
         </div>`);
     }
@@ -167,11 +161,7 @@ function search() {
   }
 
   for (let i = 0; i < card.length; i++) {
-    if (
-      title[i].textContent
-        .toLowerCase()
-        .includes(searchMovie.value.toLowerCase())
-    ) {
+    if (title[i].textContent.toLowerCase().includes(searchMovie.value.toLowerCase())) {
       card[i].style.display = "flex";
     } else {
       card[i].style.display = "none";

@@ -5,10 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>horror movie</title>
     <link rel="stylesheet" href="./css/main.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <script type="module" src="./js/main.js"></script>
   </head>
   <body>
@@ -26,16 +23,9 @@
 
     <!-- 배경 음악 관련 -->
     <div>
-      <audio
-        id="bgm"
-        src="./img/bgm.mp3"
-        autoplay
-        loop
-        volume="0.1"
-        type="audio/mp3"
-      ></audio>
-      <button id="bgmBtn">BGM</button>
-      <button id="muteBtn">Mute</button><br />
+      <audio id="bgm" src="./img/bgm.mp3" autoplay loop volume="0.1" type="audio/mp3"></audio>
+      <button id="bgmBtn"><i class="fa-solid fa-volume-high"></i></button>
+      <button id="muteBtn"><i class="fa-solid fa-volume-xmark"></i></button><br />
       <input type="range" id="volume-control" min="1" max="10" value="1" />
     </div>
     <!-- 배경 음악 끝 -->
@@ -45,24 +35,41 @@
       <div class="modalContent">
         <span class="close">&times;</span>
         <p id="modalText"></p>
-        <button onclick="location.href='review.html'" class="modalButton">
-          more...
-        </button>
+        <button onclick="location.href='review.html'" class="modalButton">more...</button>
       </div>
     </div>
     <!-- 모달 관련 여기까지 -->
 
     <div class="movie_search">
-      <input
-        type="search"
-        class="search_input"
-        placeholder="영화 제목 검색"
-        autofocus
-      />
-      <button class="search_button">제목검색</button>
+      <input type="search" class="search_input" placeholder="영화 제목 검색" autofocus />
+      <button class="search_button">제목 검색</button>
     </div>
     <div class="content"></div>
 
+    <footer>
+      <ul>
+        <li>
+          <p class="member_name">강연주</p>
+          <a href="https://github.com/JJQKR/" target="_blank">github adress : https://github.com/JJQKR/ </a>
+        </li>
+        <li>
+          <p class="member_name">고종원</p>
+          <a href="https://github.com/LastDice" target="_blank">github adress : https://github.com/LastDice </a>
+        </li>
+        <li>
+          <p class="member_name">신상준</p>
+          <a href="https://github.com/sangjun231" target="_blank">github adress : https://github.com/sangjun231 </a>
+        </li>
+        <li>
+          <p class="member_name">이종훈</p>
+          <a href="https://github.com/jonghoon7431" target="_blank">github adress : https://github.com/jonghoon7431 </a>
+        </li>
+        <li>
+          <p class="member_name">최혜미</p>
+          <a href="https://github.com/MiMing-00" target="_blank">github adress : https://github.com/MiMing-00 </a>
+        </li>
+      </ul>
+    </footer>
     <button class="top_button">top</button>
   </body>
 </html>
