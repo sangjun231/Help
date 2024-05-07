@@ -16,6 +16,7 @@ async function fetchMovies() {
       `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=27`,
       options
     );
+    console.log(response);
     const responseJson = await response.json();
     const pageResults = responseJson.results;
 
@@ -76,6 +77,7 @@ async function setCard(movies) {
 
   window.onclick = function (event) {
     const modal = document.getElementById("modal");
+    console.log(event.target, event.currentTarget)
     if (event.target == modal) {
       closeModal();
     }
