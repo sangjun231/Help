@@ -92,9 +92,10 @@ async function setCard(movies) {
   }
 
   const closeBtn = document.getElementsByClassName("close")[0];
-  closeBtn.onclick = function () {
-    closeModal();
-  };
+  closeBtn.onclick = closeModal;
+  // closeBtn.onclick = function () {
+  //   closeModal();
+  // };
 
   window.onclick = function (event) {
     const modal = document.getElementById("modal");

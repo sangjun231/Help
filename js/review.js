@@ -10,7 +10,6 @@ const options = {
 //리스트 불러오기
 async function fetchMovies() {
   let movies = [];
-  let credits = [];
 
   for (let page = 1; page <= 3; page++) {
     const response = await fetch(
@@ -20,16 +19,32 @@ async function fetchMovies() {
     const responseJson = await response.json();
     const pageResults = responseJson.results;
 
-    for (const movie of pageResults) {
-      const creditsResponse = await fetch(
-        `https://api.themoviedb.org/3/movie/${movie.id}/credits?api_key=7e82827d6ffa944c4567ae823e15e2df`,
-        options
-      );
-      const creditsData = await creditsResponse.json();
-      movie.credits = creditsData;
-    }
+    // for (const movie of pageResults) {
+    // const creditsResponse = await fetch(
+    //   `https://api.themoviedb.org/3/movie/${movie.id}/credits?api_key=7e82827d6ffa944c4567ae823e15e2df`,
+    //   options
+    // );
+    //   const creditsData = await creditsResponse.json();
+    //   movie.credits = creditsData;
+    // }
+
     movies.push(...pageResults);
   }
+  //리뷰페이지 영화 정보 fetch
+  const credits = movies.map(async (movie) => {
+    const creditsResponse = await (
+      await fetch(
+        `https://api.themoviedb.org/3/movie/${movie.id}/credits?api_key=7e82827d6ffa944c4567ae823e15e2df`,
+        options
+      )
+    ).json();
+
+    return { ...movie, credits: creditsResponse };
+  });
+  //모든 비동기화를 병렬로 진행하여 속도향상 -> 하나라도 오류시 문제 발생하는게 단점
+  movies = await Promise.all(credits);
+  console.log(movies);
+  //리뷰페이지 영화 정보 fetch 여기까지
 
   let urlParams = new URL(location.href).searchParams;
   const movieId = urlParams.get("movieId");
@@ -52,7 +67,7 @@ async function fetchMovies() {
         if (index === 0) {
           return actor.name;
         } else {
-          return `<p>${actor.name}</p>`;
+          return `<p class="actorName">${actor.name}</p>`;
         }
       })
       .join("");
