@@ -1,7 +1,6 @@
 @font-face {
   font-family: "Daughter_handwriting";
-  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/naverfont_03@1.0/Daughter_handwriting.woff")
-    format("woff");
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/naverfont_03@1.0/Daughter_handwriting.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -19,6 +18,20 @@
   --red: #c00909;
 }
 
+@font-face {
+  font-family: "Daughter_handwriting";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/naverfont_03@1.0/Daughter_handwriting.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "continuous";
+  src: url(./continuous.otf);
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -28,10 +41,16 @@
   text-decoration: none;
 }
 
+.header a:hover {
+  cursor: url(../img/skeleton-cursor.png) 20 30, auto;
+  caret-color: white;
+}
+
 body {
+  background: linear-gradient(0deg, var(--wine) 0%, rgba(0, 0, 0, 1) 11%);
+  color: white;
   width: 100%;
   height: auto;
-  /* background-color: black; */
 }
 
 .header {
@@ -112,64 +131,171 @@ body {
     transform: translateY(60vh) scaleX(0.85) rotate(45deg);
   }
 }
+
 /* 헤더 부분 끝 */
 
 .modalContent2 {
   font-family: "Daughter_handwriting";
-  font-size: 35px;
+  /* font-size: 1vw; */
   color: black;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  background-color: #fefefe;
-  margin: 2% auto;
-  border: 1px solid #888;
-  width: 80%;
-  max-width: 1180px;
-  max-height: 805px;
+  background-color: black;
+  color: white;
+  margin: auto;
+  /* border: 1px solid #888; */
+  width: 95%;
+  /* height: 90vh; */
+  /* max-width: 1180px;
+  max-height: 805px; */
   position: relative;
 }
 
 .movieInfo {
+  font-size: 1rem;
+  text-align: center;
   display: flex;
   flex-direction: column;
-  margin-left: 20px;
+  margin-left: 2%;
+  margin-top: 2%;
   flex: 1;
+  text-align: center;
 }
 
+/* .movieInfo p {
+  font-size: 2vw;
+} */
+/* .movieInfo:nth-last-child(1) {
+  font-size: 10vw;
+} */
+/*
+.movieInfo p:nth-child(6) {
+  text-align: center;
+}
+.movieInfo p:nth-child(7) {
+  text-align: center;
+}
+.movieInfo p:nth-child(8) {
+  text-align: center;
+}
+*/
+.movieImg {
+  width: 45%;
+}
 .movieTitle {
-  font-family: "continuous";
-  font-size: 100px;
+  font-size: 7vw;
+  height: 50%;
+  padding: 3% 0;
+  border-bottom: 1px solid white;
+  border-top: 1px solid white;
 }
 
 .movieOverview {
-  font-size: 35px;
+  margin: 4% 0 2% 0;
+  padding: 4% 0;
+  width: 100%;
+  /* height: 100%; */
+  overflow: auto;
+  font-size: 3vw;
+  border-bottom: 1px solid white;
 }
 
 .movieVoteAverage {
-  font-family: "continuous";
-  font-size: 50px;
+  font-size: 4vw;
+  margin: 2% 0;
 }
 
-.actorName {
-  margin-left: 70px;
+.movieDirector {
+  font-size: 3vw;
+  margin-top: 1%;
+}
+
+.movieActor {
+  font-size: 3vw;
+
+  margin-top: 1%;
+}
+
+.movieReleaseDate {
+  font-size: 3vw;
+  display: flex;
+  justify-content: end;
+  margin-right: 5%;
 }
 
 /* 리뷰 페이지 */
+
+.main {
+  margin: 5%;
+}
+
 .review {
   width: 100%;
-  border: 1px solid black;
+  margin: 0 auto;
+  border: 1px solid white;
+  display: flex;
+}
+
+.posterSection {
+  border: yellow solid 3px;
+  background-color: #a01313;
+  width: 35%;
+  height: 150px;
+  margin: 20px;
+  padding: 20px;
+}
+
+.infoSection {
+  border: yellow solid 3px;
+  background-color: #a01313;
+  width: 60%;
+  height: 150px;
+  margin: 20px;
+  padding: 20px;
+}
+
+#postingBtn {
+  font-size: 1vw;
+
+  background: none;
+  color: white;
+  border: 1px solid white;
+  /* border-radius: 10px; */
+
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+#postingBtn:hover {
+  font-size: 1vw;
+
+  background: none;
+  color: white;
+  border: 1px solid white;
+  /* border-radius: 10px; */
+
+  align-items: center;
+  justify-content: center;
+  display: flex;
+
+  cursor: url(../img/skeleton-cursor.png) 20 30, auto;
+  caret-color: white;
 }
 
 .commentList {
-  border: 1px solid black;
-  border-radius: 20px;
+  /* border: 1px solid white; */
 }
 
 .userComment {
-  margin: 5px;
-
-  border: 1px solid black;
+  position: relative;
+  font-size: 2vw;
+  margin: 2% 0;
+  border: 1px solid white;
+}
+.userComment p {
+  font-size: 1.8vw;
 }
 
 /* 리뷰 페이지 끝 */
@@ -177,16 +303,166 @@ body {
 /* 리뷰 페이지_ 영화 이미지 불러오는 곳 */
 
 .review {
-  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
   height: 300px;
 }
 
 /* 리뷰 페이지_ 닉네임 아이디 패스워드 + 댓글 등록 부분 */
 
-.commentNickPwRating {
-  display: flex;
+.commentContainer {
+  max-width: 95%;
+  margin: 5% auto;
 }
 
-/* .commentUp {
+.commentForm {
+  /* border: 1px white solid; */
+}
+
+.commentNickPwRating {
+  margin-bottom: 2%;
+  font-size: 2vw;
+  margin: 2% 0;
+  /* justify-content: space-between; */
+  align-items: center;
   display: flex;
-} */
+  width: 100%;
+}
+.commentNickPwRating :nth-child(-n + 3) {
+  margin-right: 6%;
+}
+.nickname input {
+  height: 2vw;
+}
+.pw input {
+  height: 2vw;
+}
+.rating input {
+  height: 2vw;
+}
+.commentNickPwRating p {
+  font-size: 2vw;
+}
+
+.commentUp textarea {
+  resize: none;
+  width: 100%;
+  height: 20vh;
+}
+.commentUp textarea::placeholder {
+  font-size: 2vw;
+  /* text-align: center; */
+}
+
+.commentUp #postingBtn {
+  display: flex;
+  margin: 2% auto 4%;
+  width: 20%;
+  height: 6vh;
+  border-radius: 20px;
+  font-size: 1.5vw;
+}
+
+/* .search_button {
+  font-size: 1vw;
+  padding: 0.8% 2%;
+  background: none;
+  color: white;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+
+.search_button:active {
+  font-size: 1.1vw;
+}
+ */
+
+.commentUp #postingBtn .inner {
+  align-items: center;
+}
+
+.delArea {
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+  margin-bottom: 5%;
+}
+
+.commentList {
+  width: 100%;
+}
+
+.commentLi {
+  width: 100%;
+}
+
+/* 탑 버튼 */
+
+.top_button {
+  font-family: "Daughter_handwriting";
+  font-weight: bold;
+  position: fixed;
+  bottom: 4vh;
+  width: 9vw;
+  height: 15vh;
+  right: 4vw;
+  font-size: 6vw;
+  background: white;
+  border-radius: 50%;
+  padding-bottom: 16vh;
+}
+
+.top_button:active {
+  background-color: var(--wine);
+}
+
+/* 푸터 */
+
+/* footer */
+footer {
+  display: flex;
+  border-top: 1px solid white;
+  color: white;
+  width: 98vw;
+  height: 15vh;
+  margin-top: 14vh;
+}
+
+footer ul {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: flex-end;
+  list-style: none;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 1200px) {
+  footer {
+    height: 20vh;
+  }
+
+  footer ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+footer ul li {
+  padding: 2vh 0;
+}
+
+footer ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 0.8vw;
+}
+
+footer ul li:nth-child(1) {
+  border-left: 1px solid black;
+}
+
+.member_name {
+  font-size: 1.4vw;
+  margin-bottom: 1vh;
+}
