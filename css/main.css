@@ -119,25 +119,6 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
-/* audio */
-.audio_button button {
-  font-size: 2vw;
-  border: none;
-  background-color: black;
-  color: var(--wine);
-  margin: 0 0.5%;
-}
-.audio_button button:nth-child(1) {
-  margin-left: 2%;
-}
-.audio_button button:active {
-  color: black;
-}
-#volume-control {
-  margin: 1.2%;
-  background: white;
-}
-
 /* search box */
 .movie_search {
   z-index: 2;
