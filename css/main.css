@@ -1,6 +1,7 @@
 @font-face {
   font-family: "Daughter_handwriting";
-  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/naverfont_03@1.0/Daughter_handwriting.woff") format("woff");
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/naverfont_03@1.0/Daughter_handwriting.woff")
+    format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -254,10 +255,16 @@ body::-webkit-scrollbar-thumb {
 }
 
 .movieImg {
-  width: 24vw;
-  border-radius: 1rem 1rem;
-  margin: auto 2%;
+  width: 24.8vw;
+  border-radius: 1rem 0 0 1rem;
 }
+@media (min-width: 1980px) {
+  .movieImg {
+    width: 67.5vw;
+    border-radius: 2rem 0 0 2rem;
+  }
+}
+
 .movieInfo {
   width: cover;
   display: flex;
@@ -391,6 +398,42 @@ body.scroll {
   justify-content: space-between;
   list-style: none;
 }
+
+/* 배경 음악 CSS */
+
+#bgmBtn,
+#muteBtn {
+  margin: auto 0.2vw 0.5vw 1vw;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  background-color: transparent;
+  border: 1px white solid;
+  border-radius: 3px;
+  padding: 2px;
+  font-weight: 900;
+}
+
+#bgmBtn:hover,
+#muteBtn:hover {
+  color: var(--wine);
+  text-decoration: line-through;
+  font-weight: 900;
+  font-style: italic;
+  border: 1px var(--wine) solid;
+  border-radius: 3px;
+}
+
+#volume-control {
+  border-radius: 8px;
+  outline: none;
+  accent-color: var(--wine);
+}
+
+/* 배경 음악 CSS 끝 */
 
 /* footer */
 footer {
