@@ -19,12 +19,14 @@
 * {
   padding: 0;
   margin: 0;
+  font-family: "Daughter_handwriting";
 }
 
 body {
   width: 100%;
   height: auto;
   user-select: none;
+  cursor: url(../img/skeleton-cursor.png) 20 30, auto;
   background: linear-gradient(0deg, var(--wine) 0%, rgba(0, 0, 0, 1) 6%);
 }
 body::-webkit-scrollbar {
@@ -109,13 +111,13 @@ body::-webkit-scrollbar-thumb {
   }
 
   60% {
-    transform: translateY(160%) scaleX(0.85) rotate(45deg);
+    transform: translateY(20%) scaleX(0.85) rotate(45deg);
     animation-timing-function: ease-in;
   }
 
   80%,
   100% {
-    transform: translateY(200vh) scaleX(0.85) rotate(45deg);
+    transform: translateY(40vh) scaleX(0.85) rotate(45deg);
   }
 }
 
@@ -131,30 +133,39 @@ body::-webkit-scrollbar-thumb {
   padding-bottom: 4%;
 }
 .search_input::placeholder {
-  font-size: 1.2rem;
+  font-size: 1.5vw;
+  text-align: center;
+  color: white;
 }
 
 .movie_search input {
   width: 20vw;
-  height: 5vh;
   margin: 2vw;
   border: none;
   border-bottom: 1px solid white;
   background: none;
   color: white;
   font-size: 1.2rem;
+  text-align: center;
 }
 
 .search_button {
-  font-size: 1vw;
-  padding: 0.8% 2%;
+  font-size: 1.5vw;
+  padding: 0.4% 2%;
   background: none;
   color: white;
   border: 1px solid white;
   border-radius: 10px;
+  cursor: pointer;
+}
+.search_button:hover{
+  border: 1px solid var(--wine);
+  color: var(--wine);
 }
 .search_button:active {
-  font-size: 1.1vw;
+  transform: scale(1.1);
+  background-color: var(--wine);
+  color: white;
 }
 
 .content {
@@ -174,7 +185,6 @@ body::-webkit-scrollbar-thumb {
   perspective: 1000;
 }
 .card:hover {
-  cursor: url(../img/skeleton-cursor.png) 20 30, auto;
   caret-color: white;
 }
 
@@ -375,6 +385,8 @@ body.scroll {
   border-radius: 3px;
   padding: 2px;
   font-weight: 900;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 1vw;
 }
 
 #bgmBtn:hover,
@@ -385,6 +397,10 @@ body.scroll {
   font-style: italic;
   border: 1px var(--wine) solid;
   border-radius: 3px;
+}
+#bgmBtn:active,
+#muteBtn:active {
+  transform: scale(1.2);
 }
 
 #volume-control {
@@ -400,7 +416,6 @@ body.scroll {
 /* footer */
 footer {
   display: flex;
-  /* border-top: 1px solid white; */
   color: white;
   width: 98vw;
   height: 15vh;
@@ -414,6 +429,7 @@ footer ul {
   list-style: none;
   text-align: center;
   flex-wrap: wrap;
+  border-top: 1px solid white;
 }
 
 @media (max-width: 1200px) {
@@ -457,6 +473,7 @@ footer ul li a {
   border-radius: 50%;
   display: flex;
   justify-content: center;
+  cursor: pointer;
 }
 .top_button:active {
   background-color: var(--wine);
