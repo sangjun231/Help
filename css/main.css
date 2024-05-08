@@ -429,7 +429,6 @@ footer ul {
   list-style: none;
   text-align: center;
   flex-wrap: wrap;
-  border-top: 1px solid white;
 }
 
 @media (max-width: 1200px) {
@@ -446,7 +445,6 @@ footer ul li {
 }
 .fa-github {
   font-size: 4vw;
-  /* margin-bottom: 5%; */
 }
 footer ul li a {
   text-decoration: none;
