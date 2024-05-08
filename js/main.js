@@ -51,22 +51,21 @@ async function setCard(movies) {
   });
 
   // 배경음악 관련
+  const audioContainer = document.querySelector("#bgm");
+
   document.querySelector("#bgmBtn").addEventListener("click", () => {
-    const audioContainer = document.querySelector("#bgm");
     audioContainer.loop = true;
     audioContainer.volume = 0.1;
     audioContainer.play();
   });
 
   document.querySelector("#muteBtn").addEventListener("click", () => {
-    const audioContainer = document.querySelector("#bgm");
     audioContainer.pause();
   });
 
   document
     .querySelector("#volume-control")
     .addEventListener("change", (event) => {
-      const audioContainer = document.querySelector("#bgm");
       audioContainer.volume = event.target.value / 10;
     });
 
@@ -92,9 +91,10 @@ async function setCard(movies) {
   }
 
   const closeBtn = document.getElementsByClassName("close")[0];
-  closeBtn.onclick = function () {
-    closeModal();
-  };
+  closeBtn.onclick = closeModal;
+  // closeBtn.onclick = function () {
+  //   closeModal();
+  // };
 
   window.onclick = function (event) {
     const modal = document.getElementById("modal");
@@ -120,7 +120,9 @@ async function setCard(movies) {
               ${movieData.title}
             </p>
             <p class="movieOverview">${movieData.overview}</p>
-            <p class="movieVoteAverage">Rating: ${movieData.vote_average}</p>
+            <p class="movieVoteAverage">Rating: ${movieData.vote_average.toFixed(
+              1
+            )}</p>
           </div>
         </div>`);
     }
