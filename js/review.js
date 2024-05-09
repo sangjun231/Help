@@ -127,7 +127,7 @@ function postingComment() {
   }
 
   if (isNaN(rating)) {
-    alert("평점은 숫자로 입력해주세요,");
+    alert("평점은 숫자로 입력해주세요.");
     return;
   } else if (rating > 10 || rating < 0) {
     alert("평점은 1점부터 10점까지 해주세요.");
