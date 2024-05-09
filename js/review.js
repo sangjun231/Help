@@ -121,6 +121,11 @@ function postingComment() {
   const comment = document.querySelector("#comment").value;
   const commentId = Date.now().toString();
 
+  if (rating === 0) {
+    alert("평점은 1점부터 10점까지 해주세요.");
+    return;
+  }
+
   if (!nickname || !pw || !comment || !rating) {
     alert("닉네임, 비밀번호, 평점, 댓글을 모두 입력해주세요.");
     return;
