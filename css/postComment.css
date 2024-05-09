@@ -1,7 +1,7 @@
 @font-face {
   font-family: "Daughter_handwriting";
   src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/naverfont_03@1.0/Daughter_handwriting.woff")
-    format("woff");
+  format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -45,7 +45,6 @@
 }
 
 .header a:hover {
-  cursor: url(../img/skeleton-cursor.png) 20 30, auto;
   caret-color: white;
 }
 
@@ -127,13 +126,13 @@ body {
   }
 
   60% {
-    transform: translateY(120%) scaleX(0.85) rotate(45deg);
+    transform: translateY(20%) scaleX(0.85) rotate(45deg);
     animation-timing-function: ease-in;
   }
 
   80%,
   100% {
-    transform: translateY(60vh) scaleX(0.85) rotate(45deg);
+    transform: translateY(40vh) scaleX(0.85) rotate(45deg);
   }
 }
 
@@ -249,61 +248,43 @@ body {
 .review {
   width: 100%;
   margin: 0 auto;
-  /* border: 1px solid white; */
   display: flex;
 }
 
-.posterSection {
-  border: yellow solid 3px;
-  background-color: #a01313;
-  width: 35%;
-  height: 150px;
-  margin: 20px;
-  padding: 20px;
-}
-
-.infoSection {
-  border: yellow solid 3px;
-  background-color: #a01313;
-  width: 60%;
-  height: 150px;
-  margin: 20px;
-  padding: 20px;
-}
 
 #postingBtn {
   font-size: 1vw;
   background: none;
   color: white;
   border: 1px solid white;
-  cursor: url(../img/skeleton-cursor.png) 20 30, auto;
   align-items: center;
   justify-content: center;
   display: flex;
+  cursor: pointer;
 }
 #postingBtn:hover {
-  font-size: 1vw;
-  background: none;
-  color: white;
-  border: 1px solid white;
-  align-items: center;
-  justify-content: center;
-  display: flex;
+  border: 1px solid var(--wine);
+  color: var(--wine);
 
   caret-color: white;
 }
 #postingBtn:active {
   background-color: var(--wine);
+  color: white;
+  transform: scale(1.1);
 }
 
 .userComment {
   position: relative;
   font-size: 2vw;
   margin: 2% 0;
+  padding: 2%;
   border: 1px solid white;
+  border-radius: 10px;
 }
 .userComment p {
   font-size: 1.8vw;
+  margin: 1% 0;
 }
 
 /* 리뷰 페이지 끝 */
@@ -341,10 +322,13 @@ body {
   border-bottom: 1px solid white;
   background-color: black;
   color: white;
-  font-size: 1.8vw;
+  font-size: 2vw;
+  text-align: center;
 }
 .nickname input::placeholder {
-  font-size: 1.8vw;
+  font-size: 2vw;
+  color: white;
+  text-align: center;
 }
 .pw input {
   width: 20vw;
@@ -353,14 +337,17 @@ body {
   border-bottom: 1px solid white;
   background-color: black;
   color: white;
-  font-size: 1.8vw;
+  font-size: 2vw;
+  text-align: center;
 }
 .pw input::placeholder {
-  font-size: 1.8vw;
+  font-size: 2vw;
+  color: white;
+  text-align: center;
 }
 .rating {
   display: flex;
-  color: gray;
+  color: white;
 }
 .rating input {
   width: 16vw;
@@ -370,7 +357,8 @@ body {
   border-bottom: 1px solid white;
   color: white;
   background-color: black;
-  font-size: 1.8vw;
+  font-size: 2vw;
+  text-align: center;
 }
 
 .rating input::-webkit-outer-spin-button,
@@ -386,9 +374,17 @@ body {
 .commentUp input {
   margin: 0 8%;
   width: 90%;
+  background-color: black;
+  color: white;
+  border: none;
+  border-bottom: 1px solid white;
+  font-size: 2vw;
+  text-align: center;
 }
 .commentUp input::placeholder {
-  font-size: 1.2vw;
+  color: white;
+  font-size: 1.6vw;
+  text-align: center;
 }
 
 .commentUp #postingBtn {
@@ -429,7 +425,7 @@ body {
   position: absolute;
   right: 0;
   margin-right: 2%;
-  bottom: 30%;
+  bottom: 40%;
   width: 8vw;
   cursor: pointer;
   border: none;
@@ -438,8 +434,14 @@ body {
   color: white;
   background-color: transparent;
 }
+.delBtn:hover{
+  border: 1px solid var(--wine);
+  color: var(--wine);
+}
 .delBtn:active {
   background-color: var(--wine);
+  color: white;
+  transform: scale(1.1);
 }
 
 /* 탑 버튼 */
@@ -457,6 +459,7 @@ body {
   border-radius: 50%;
   display: flex;
   justify-content: center;
+  cursor: pointer;
 }
 .top_button:active {
   background-color: var(--wine);
