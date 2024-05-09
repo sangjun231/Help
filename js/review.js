@@ -121,14 +121,16 @@ function postingComment() {
   const comment = document.querySelector("#comment").value;
   const commentId = Date.now().toString();
 
+  if (!nickname || !pw || !comment || !rating) {
+    alert("닉네임, 비밀번호, 평점, 댓글을 모두 입력해주세요.");
+    return;
+  }
+
   if (isNaN(rating)) {
     alert("평점은 숫자로 입력해주세요,");
     return;
   } else if (rating > 10 || rating < 0) {
-    alert("평점은 0점부터 10점까지 해주세요.");
-    return;
-  } else if (!nickname || !pw || !comment) {
-    alert("닉네임, 비밀번호, 평점, 댓글을 모두 입력해주세요.");
+    alert("평점은 1점부터 10점까지 해주세요.");
     return;
   } else {
     const data = {
