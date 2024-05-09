@@ -75,7 +75,6 @@ async function setCard(movies) {
   function openModal(text) {
     const modal = document.getElementById("modal");
     const modalText = document.getElementById("modalText");
-    const body = document.body;
 
     modalText.innerHTML = text;
     modal.style.display = "block";
@@ -84,10 +83,9 @@ async function setCard(movies) {
 
   function closeModal() {
     const modal = document.getElementById("modal");
-    const body = document.body;
 
     modal.style.display = "none";
-    body.classList.remove("scroll");
+    modal.classList.remove("scroll");
   }
 
   const closeBtn = document.getElementsByClassName("close")[0];
