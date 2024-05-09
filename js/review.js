@@ -42,9 +42,9 @@ async function fetchMovies() {
         options
       )
     ).json();
-
     return { ...movie, credits: creditsResponse };
   });
+
   //모든 비동기화를 병렬로 진행하여 속도향상 -> 하나라도 오류시 문제 발생하는게 단점
   movies = await Promise.all(credits);
   //리뷰페이지 영화 정보 fetch 여기까지

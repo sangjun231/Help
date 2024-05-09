@@ -79,7 +79,7 @@ async function setCard(movies) {
 
     modalText.innerHTML = text;
     modal.style.display = "block";
-    body.classList.add("scroll");
+    modal.classList.add("scroll");
   }
 
   function closeModal() {
